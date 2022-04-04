@@ -12,7 +12,6 @@ const addOption = (city) => {
 
 //                                 CARD      CITY
 
-
 //   create the right-bottom side of the card
 const cardRightBottom = (main) => {
     const divBottomRight = document.createElement("div");
@@ -80,10 +79,13 @@ const createCard = (cityObj) => {
 
     
     const imgWeather = document.createElement("img");
-
-    // cityObj.weather.main.toLowerCase() == "clouds" ? imgWeather.setAttribute("src", "") : imgWeather.setAttribute("src", "");
-
     imgWeather.setAttribute("alt", "weather img");
+
+    cityObj.weather.map((data) => data.main.toLowerCase() == "clouds" ? imgWeather.setAttribute("src", "img/cloud.png") :
+    data.main.toLowerCase() == "rain" ? imgWeather.setAttribute("src", "img/cloud+rain.png") : imgWeather.setAttribute("src", "img/sun.png"));
+
+    imgWeather.setAttribute("width", "100px");
+    imgWeather.setAttribute("height", "auto");
 
 
     // CREATING    THE   LEFT    SIDE   OF   THE    CARD 
