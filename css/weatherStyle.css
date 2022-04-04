@@ -47,10 +47,10 @@ header select {
 #city-list {
     display: flex;
     flex-flow: row wrap;
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
 
-    margin: 20px 0;
+    margin: 35px 10px;
 }
 /*    END  CONTAINER CARD    */
 
@@ -83,7 +83,6 @@ header select {
 
 /*        CARD     STYLE       */
 .card {
-    background-color: burlywood;
     width: 350px;
 
     display: flex;
@@ -94,6 +93,14 @@ header select {
 
     border-radius: 30px;
 
+    /* color: rgb(213, 234, 253); */
+
+    -webkit-box-shadow: 8px 8px 15px 6px #000000; 
+    box-shadow: 8px 8px 15px 6px black;
+
+    color: rgb(213, 234, 253);
+    background: #FFFFFF;
+    text-shadow: 2px 2px 0px #000000, 3px 3px 0px rgba(56,202,255,1);
 }
 .card .left-side {
     display: flex;

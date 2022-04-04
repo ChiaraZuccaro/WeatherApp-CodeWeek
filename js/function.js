@@ -72,7 +72,7 @@ const cardRight = (main) => {
 
    return divAllRight;
 }
-const createCard = (cityObj) => {
+const createCard = (cityObj, icon) => {
     const divAll = document.createElement("div");
     const divLeft = document.createElement("div");
     // const imgCity = document.createElement("img");
@@ -97,7 +97,9 @@ const createCard = (cityObj) => {
     divLeft.append(imgWeather, cityName);
     // END    OF   CREATING  THE   LEFT    SIDE   OF   THE    CARD 
 
-    
+    divAll.style.backgroundImage = `url(${icon})`;
+    divAll.style.backgroundPosition = "center";
+    divAll.style.backgroundSize = "cover";
     divAll.classList.add("card");
 
     divAll.append( divLeft, cardRight(cityObj.main));
@@ -109,7 +111,10 @@ const createCard = (cityObj) => {
 
 
 //  set local time
-const localTime = () => {
+const localTime = (datatime) => {
+    const dayData = datatime.split("").slice(0, 10).join("").split("-");
+    const timeData = datatime.split("").slice(11, 19).join("").split(":");
+
     const divDate = document.createElement("div");
     const divTime = document.createElement("div");
 
@@ -117,15 +122,19 @@ const localTime = () => {
     const months = document.createElement("h4");
     const year = document.createElement("h4");
 
-    day.textContent = "05/";
-    months.textContent = "04/";
-    year.textContent = "2022";
+    console.log(datatime.split("").slice(11, 19).join("").split(":"));
+
+    day.textContent = `${dayData[2]}/`;
+    months.textContent = `${dayData[1]}/`;
+    year.textContent = `${dayData[0]}`;
 
     const hours = document.createElement("h4");
     const minute = document.createElement("h4");
+    const seconds = document.createElement("h4");
 
-    hours.textContent = "00:";
-    minute.textContent = "00";
+    hours.textContent = `${timeData[0]}:`;
+    minute.textContent = `${timeData[1]}:`;
+    seconds.textContent = `${timeData[2]}`;
 
     divDate.append(day, months, year);
     divDate.classList.add("date");
@@ -136,6 +145,11 @@ const localTime = () => {
     q(".time-zone").append(divDate, divTime);
 }
 
+const getTimeApi = async () => {
+    const res = await 
+    fetch(`http://worldtimeapi.org/api/timezone/Europe/Rome`);
+    return await res.json();
+}
 
 const getApi = async (city) => {
     const res = await 
@@ -143,4 +157,4 @@ const getApi = async (city) => {
     return await res.json();
 }
 
-export { addOption, getApi, createCard, localTime }
+export { addOption, getApi, createCard, localTime, getTimeApi }
