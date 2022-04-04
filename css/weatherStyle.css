@@ -3,14 +3,113 @@
     padding: 0;
 }
 
+
+
 header {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
+
+    padding: 10px 30px;
 }
 header .h1-logo {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     gap: 10px;
+}
+header select {
+    width: 180px;
+    align-self: center;
+
+    padding: 3px 20px 3px 10px;
+
+    border: 1px rgb(163, 47, 47) solid;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+/*      CONTAINER CARD       */
+#city-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    justify-content: center;
+
+    margin: 20px 0;
+}
+/*    END  CONTAINER CARD    */
+
+
+
+
+
+
+/*        CARD     STYLE       */
+.card {
+    background-color: burlywood;
+    width: 450px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    padding: 15px 25px;
+}
+.card .left-side {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+    width: 50%;
+}
+
+.card .right-side {    
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 100px;
+
+    width: 50%;
+}
+.card .right-side .temp {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    width: 100%;
+}
+.card .right-side .bottom-card {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: end;
+
+    width: 100%;
+}
+.card .right-side .bottom-card .min-max {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    width: 70%;
+}
+/*   END      CARD     STYLE   */
+
+
+
+
+
+
+footer {
+    text-align: center;
+}
+footer a {
+    text-decoration: none;
+    color: black;
 }
