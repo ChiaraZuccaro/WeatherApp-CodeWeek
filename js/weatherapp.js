@@ -1,7 +1,9 @@
-import { addOption, getApi, createCard } from "./function.js";
+import { addOption, getApi, createCard, localTime } from "./function.js";
 
-let cityList; 
+let cityList;
+let time;
 
+localTime();
 
 //     LocalStorage check
 try {
@@ -18,5 +20,8 @@ try {
 // Loading cities & creating card
 for(let i = 0; i < cityList.length; i++) {
     addOption(cityList[i]);
-    getApi(cityList[i]).then((data) => createCard(data));
+    getApi(cityList[i]).then((data) => {
+        time = data.timezone;
+        createCard(data);
+    });
 }

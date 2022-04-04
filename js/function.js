@@ -32,11 +32,11 @@ const cardRightBottom = (main) => {
     divHum.classList.add("min-max");
 
     min.textContent = "MIN";
-    minValue.textContent = `${main.temp_min} °C`;
+    minValue.textContent = `${parseInt(main.temp_min)} °C`;
     divMin.append(min, minValue);
 
     max.textContent = "MAX";
-    maxValue.textContent = `${main.temp_max} °C`;
+    maxValue.textContent = `${parseInt(main.temp_max)} °C`;
     divMax.append(max, maxValue);
 
     hum.textContent = "HUMIDITY";
@@ -58,8 +58,8 @@ const cardRight = (main) => {
     const temp = document.createElement("h3");
     const feelTemp = document.createElement("p");
 
-    temp.textContent = `${main.temp} °C`;
-    feelTemp.textContent = `${main.feels_like} °C`;
+    temp.textContent = `${parseInt(main.temp)} °C`;
+    feelTemp.textContent = `wind chill ${main.feels_like} °C`;
 
     divTempTop.append( temp, feelTemp);
     divTempTop.classList.add("temp");
@@ -108,6 +108,33 @@ const createCard = (cityObj) => {
 //                            END      CARD      CITY
 
 
+//  set local time
+const localTime = () => {
+    const divDate = document.createElement("div");
+    const divTime = document.createElement("div");
+
+    const day = document.createElement("h4");
+    const months = document.createElement("h4");
+    const year = document.createElement("h4");
+
+    day.textContent = "05/";
+    months.textContent = "04/";
+    year.textContent = "2022";
+
+    const hours = document.createElement("h4");
+    const minute = document.createElement("h4");
+
+    hours.textContent = "00:";
+    minute.textContent = "00";
+
+    divDate.append(day, months, year);
+    divDate.classList.add("date");
+
+    divTime.append(hours, minute);
+    divTime.classList.add("time");
+
+    q(".time-zone").append(divDate, divTime);
+}
 
 
 const getApi = async (city) => {
@@ -116,4 +143,4 @@ const getApi = async (city) => {
     return await res.json();
 }
 
-export { addOption, getApi, createCard }
+export { addOption, getApi, createCard, localTime }
