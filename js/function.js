@@ -124,6 +124,28 @@ const createCard = (cityObj, icon) => {
 //  set local time
 const timeDisplay = document.getElementById("time-zone");
 
+const numberToMonths = (number) => {
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ]
+    
+    for(let i = 0; i < months.length; i++) {
+        if((number  - 1) == i) {
+            return months[i];            
+        }
+    }
+}
 const localTime = (datatime) => {
     timeDisplay.innerHTML = "";
     const dayData = datatime[0];
@@ -138,7 +160,7 @@ const localTime = (datatime) => {
     const year = document.createElement("h4");
 
     day.textContent = `${dayData.split("/")[1]}`;
-    months.textContent = `${dayData.split("/")[0]} `;
+    months.textContent = `${numberToMonths(dayData.split("/")[0])} `;
     year.textContent = `${dayData.split("/")[2]}`;
 
     const hours = document.createElement("h4");
