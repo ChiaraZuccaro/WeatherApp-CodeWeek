@@ -3,12 +3,24 @@ const q = (selector) => document.querySelector(selector);
 const addOption = (city) => {
     const optionEl = document.createElement("option");
 
+    optionEl.classList.add("opt");
     
     optionEl.value = `${city.toLowerCase()}`;
     optionEl.textContent = `${city}`;
 
     q("#city-selector").append(optionEl);
 }
+
+//               TO    FILTER     CITY
+const removeCard = () => {    
+    const divEl = document.querySelectorAll(".card");
+    divEl.forEach((card) => q("#city-list").removeChild(card));
+}
+const selectCity = (card) => {
+    removeCard();
+    q("#city-list").append(card);
+}
+//            END   TO   FILTER    CITY
 
 //                                 CARD      CITY
 
@@ -75,8 +87,6 @@ const cardRight = (main) => {
 const createCard = (cityObj, icon) => {
     const divAll = document.createElement("div");
     const divLeft = document.createElement("div");
-    // const imgCity = document.createElement("img");
-
     
     const imgWeather = document.createElement("img");
     imgWeather.setAttribute("alt", "weather img");
@@ -106,50 +116,58 @@ const createCard = (cityObj, icon) => {
 
     q("#city-list").append(divAll);
 }
-
 //                            END      CARD      CITY
 
 
+
+
 //  set local time
+const timeDisplay = document.getElementById("time-zone");
+
 const localTime = (datatime) => {
-    const dayData = datatime.split("").slice(0, 10).join("").split("-");
-    const timeData = datatime.split("").slice(11, 19).join("").split(":");
+    timeDisplay.innerHTML = "";
+    const dayData = datatime[0];
+    const timeData = datatime[1];
 
     const divDate = document.createElement("div");
     const divTime = document.createElement("div");
+    const all = document.createElement("div");
 
     const day = document.createElement("h4");
     const months = document.createElement("h4");
     const year = document.createElement("h4");
 
-    console.log(datatime.split("").slice(11, 19).join("").split(":"));
-
-    day.textContent = `${dayData[2]}/`;
-    months.textContent = `${dayData[1]}/`;
-    year.textContent = `${dayData[0]}`;
+    day.textContent = `${dayData.split("/")[1]}`;
+    months.textContent = `${dayData.split("/")[0]} `;
+    year.textContent = `${dayData.split("/")[2]}`;
 
     const hours = document.createElement("h4");
     const minute = document.createElement("h4");
     const seconds = document.createElement("h4");
 
-    hours.textContent = `${timeData[0]}:`;
-    minute.textContent = `${timeData[1]}:`;
-    seconds.textContent = `${timeData[2]}`;
+    hours.textContent = `${timeData.split(":")[0]}:`;
+    minute.textContent = `${timeData.split(":")[1]}:`;
+    seconds.textContent = `${timeData.split(":")[2]}`;
 
     divDate.append(day, months, year);
     divDate.classList.add("date");
 
-    divTime.append(hours, minute);
+    divTime.append(hours, minute, seconds);
     divTime.classList.add("time");
 
-    q(".time-zone").append(divDate, divTime);
-}
+    all.classList.add("all-time");
 
-const getTimeApi = async () => {
-    const res = await 
-    fetch(`http://worldtimeapi.org/api/timezone/Europe/Rome`);
-    return await res.json();
+    all.append(divDate, divTime)
+    timeDisplay.append(all);
 }
+function refreshTime() {
+    let dateString = new Date().toLocaleString("en-US", {timeZone: "Europe/Rome"});
+    
+    localTime(dateString.split(", "));
+}
+setInterval(refreshTime, 1000);
+//   end local time
+
 
 const getApi = async (city) => {
     const res = await 
@@ -157,4 +175,4 @@ const getApi = async (city) => {
     return await res.json();
 }
 
-export { addOption, getApi, createCard, localTime, getTimeApi }
+export { addOption, getApi, createCard, selectCity, removeCard }

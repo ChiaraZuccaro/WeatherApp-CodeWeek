@@ -16,22 +16,24 @@
             <h1>Sicily weather</h1>
         </div>
 
-        <select name="cities" id="city-selector" title="selector">
-            <option disabled selected value>Select a city...</option>
-        </select>
+
+        <div class="options">
+            <label for="city-selector">Choose a city to display</label>
+            <select name="cities" id="city-selector" title="selector">                
+                <option selected>All cities</option>
+            </select>
+        </div>
     </header>
     
     
-    <div class="time-zone"></div>
+    <div id="time-zone"></div>
 
     <!-- display saves -->
     <section class="saved-city">
     </section>
 
     <!-- display all city -->
-    <section id="city-list">
-
-    </section>
+    <section id="city-list"></section>
 
     <!-- add a city -->
     <section class="add-city">

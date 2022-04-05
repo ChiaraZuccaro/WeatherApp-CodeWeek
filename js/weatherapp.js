@@ -1,18 +1,14 @@
-import { addOption, getApi, createCard, localTime, getTimeApi } from "./function.js";
+import { addOption, getApi, createCard, selectCity, removeCard } from "./function.js";
 
-let cityList;
+let cityListHome;
 let time;
 
-try {
-    getTimeApi().then((data) => localTime(data.datetime));
-} catch {
-    console.log("orario non fetchato");
-}
+
 //     LocalStorage check
 try {
-    cityList = JSON.parse(localStorage.getItem("cities").split(","));
+    cityListHome = JSON.parse(localStorage.getItem("cities").split(","));
 } catch {
-    cityList = [
+    cityListHome = [
         {
             city: "Catania",
             icon: "features/liotru.jpg"
@@ -52,11 +48,31 @@ try {
     ];
 }
 
-
-// Loading cities & creating card
-for(let i = 0; i < cityList.length; i++) {
-    addOption(cityList[i].city);
-    getApi(cityList[i].city).then((data) => {
-        createCard(data, cityList[i].icon);
+// Loading cities & creating card & filter
+for(let i = 0; i < cityListHome.length; i++) {
+    addOption(cityListHome[i].city);
+    getApi(cityListHome[i].city).then((data) => {
+        createCard(data, cityListHome[i].icon);
+    }).then(() => {        
+        const cardEls = document.querySelectorAll(".card");
+        const selector = document.querySelector("#city-selector");
+        
+        //                        FILTER       CITY
+        selector.addEventListener("click", () => {    
+            if(selector.selectedIndex > 0 && selector.selectedIndex <= cityListHome.length) {            
+                cardEls.forEach(element => {
+                    if(element.outerHTML.toLowerCase().split("").join("").includes(selector.value)) {
+                        selectCity(element);
+                    }
+                });
+            } else {        
+                removeCard();
+                getApi(cityListHome[i].city).then((data) => {
+                    createCard(data, cityListHome[i].icon);
+                });
+            }
+        });
+        
+        //                  END     FILTER       CITY
     });
 }

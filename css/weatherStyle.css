@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Kanit&family=Lobster&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Chakra+Petch:wght@300&family=Comfortaa:wght@300&family=Kanit&family=Lobster&family=Pacifico&display=swap');
 
 * {
     margin: 0;
     padding: 0;
 }
 
-body {
+html, body {
     font-family: 'Abel', sans-serif;
+    scroll-behavior: smooth;
 }
 
 
@@ -23,22 +24,49 @@ header .h1-logo {
     flex-flow: row nowrap;
     align-items: center;
     gap: 10px;
+
+    width: 50%;
 }
 header .h1-logo h1 {
     font-family: 'Pacifico', cursive;
     font-size: 40px;
 }
-header select {
-    width: 180px;
-    align-self: center;
+header .options {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
 
-    padding: 3px 20px 3px 10px;
-
-    border: 1px rgb(163, 47, 47) solid;
-    border-radius: 20px;
+    width: 40%;
 }
+header .options #city-selector {
+    box-sizing: border-box;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
 
+    width: 250px;
 
+    padding: 3px 20px 3px 15px;
+
+    border: 2px rgb(0, 0, 0) solid;
+    border-radius: 20px;
+
+    font-family: 'Comfortaa', cursive;
+    
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'%3E%3Cpath fill='%23333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 10px;
+}
+header .options #city-selector::-ms-expand {
+    display: none;
+}
+header .options #city-selector:focus {
+    border-color: #999;
+    box-shadow: 0 0 1px 2px #fdff6d;
+}
 
 
 
@@ -57,8 +85,10 @@ header select {
 
 
 
+
+
 /*            TIME         */
-.time-zone {
+#time-zone {
     display: flex;
     flex-flow: column nowrap;
     gap: 10px;
@@ -66,14 +96,29 @@ header select {
 
     font-size: 40px;
 }
-.time-zone .date {
-    display: flex;
-    flex-flow: row nowrap;
+#time-zone .all-time {
+    background-color: #000000;
+    color: cadetblue;
+    
+    padding: 5px 20px;
 
+    border: 2px cadetblue solid;
+    border-radius: 30px;
+
+    font-family: 'Chakra Petch', sans-serif;
 }
-.time-zone .time {    
+#time-zone .all-time .date {
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
+}
+#time-zone .all-time .date h4 {
+    padding: 0 10px;
+}
+#time-zone .all-time .time {    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
 }
 
 
@@ -100,7 +145,7 @@ header select {
 
     color: rgb(213, 234, 253);
     background: #FFFFFF;
-    text-shadow: 2px 2px 0px #000000, 3px 3px 0px rgba(56,202,255,1);
+    text-shadow: 2px 2px 0px #000000, 3px 3px 3px rgba(56,202,255,1);
 }
 .card .left-side {
     display: flex;
