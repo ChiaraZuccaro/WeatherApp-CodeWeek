@@ -94,7 +94,7 @@ const createCard = (cityObj, icon) => {
     cityObj.weather.map((data) => data.main.toLowerCase() == "clouds" ? imgWeather.setAttribute("src", "img/cloud.png") :
     data.main.toLowerCase() == "rain" ? imgWeather.setAttribute("src", "img/cloud+rain.png") : imgWeather.setAttribute("src", "img/sun.png"));
 
-    imgWeather.setAttribute("width", "100px");
+    imgWeather.setAttribute("width", "120px");
     imgWeather.setAttribute("height", "auto");
 
 
@@ -139,7 +139,7 @@ const numberToMonths = (number) => {
         "November",
         "December"
     ]
-    
+
     for(let i = 0; i < months.length; i++) {
         if((number  - 1) == i) {
             return months[i];            

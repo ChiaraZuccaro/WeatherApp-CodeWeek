@@ -94,7 +94,7 @@ header .options #city-selector:focus {
     gap: 10px;
     align-items: center;
 
-    font-size: 40px;
+    font-size: 50px;
 }
 #time-zone .all-time {
     
@@ -147,8 +147,6 @@ header .options #city-selector:focus {
     padding: 15px 25px;
 
     border-radius: 30px;
-
-    /* color: rgb(213, 234, 253); */
 
     -webkit-box-shadow: 8px 8px 15px 6px #000000; 
     box-shadow: 8px 8px 15px 6px black;
@@ -237,4 +235,129 @@ footer p {
 footer a {
     text-decoration: none;
     color: antiquewhite;
+}
+
+
+
+
+/*         MEDIA    QUERY        */
+@media (max-width: 321px) {
+    #time-zone {    
+        font-size: 25px;
+    }
+
+
+    .card {
+        width: 260px;
+
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 376px) {
+    header {        
+        padding: 5px;
+    }
+    header .h1-logo {
+        gap: 5px;
+    }
+    header .h1-logo h1 {
+        font-size: 20px;
+    }
+    header .h1-logo img {
+        width: 30px;
+        height: auto;
+    }
+    header .options #city-selector {
+        width: 100%;
+        height: 20px;
+
+        font-size: 10px;
+    }
+
+
+    #time-zone {    
+        font-size: 30px;
+    }
+
+
+    .card {
+        width: 300px;
+
+        padding: 15px;
+    }
+    .card .left-side {    
+        width: 50%;
+    
+        padding: 5px;
+    }
+    .card .left-side h2 {
+        font-size: 23px;
+    }
+    .card .right-side {
+        padding: 8px 2px;
+    }
+    .card .right-side .bottom-card .min-max {
+        gap: 15px;
+    
+        width: 80%;
+    }
+}
+
+@media (max-width: 426px) {
+    header {        
+        padding: 8px;
+    }
+    header .h1-logo {
+        gap: 5px;
+    }
+    header .h1-logo h1 {
+        font-size: 25px;
+    }
+    header .h1-logo img {
+        width: 50px;
+        height: auto;
+    }
+    header .options label {
+        display: none;
+    }
+    header .options #city-selector {
+        width: 100%;
+        height: 25px;
+
+        font-size: 15px;
+    }
+
+
+    #time-zone {    
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 769px) {
+    header {        
+        padding: 8px;
+    }
+    header .h1-logo {
+        gap: 5px;
+    }
+    header .h1-logo h1 {
+        font-size: 35px;
+    }
+    header .h1-logo img {
+        width: 80px;
+        height: auto;
+    }
+    header .options #city-selector {
+        width: 100%;
+        height: 25px;
+
+        font-size: 15px;
+    }
+
+
+    #time-zone {    
+        font-size: 45px;
+    }
 }
