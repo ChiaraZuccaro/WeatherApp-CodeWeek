@@ -1,4 +1,5 @@
-const q = (selector) => document.querySelector(selector);
+import { q } from "./addingCity.js";
+
 
 const addOption = (city) => {
     const optionEl = document.createElement("option");
@@ -11,6 +12,9 @@ const addOption = (city) => {
     q("#city-selector").append(optionEl);
 }
 
+
+
+
 //               TO    FILTER     CITY
 const removeCard = () => {    
     const divEl = document.querySelectorAll(".card");
@@ -21,6 +25,12 @@ const selectCity = (card) => {
     q("#city-list").append(card);
 }
 //            END   TO   FILTER    CITY
+
+
+
+
+
+
 
 //                                 CARD      CITY
 
@@ -121,6 +131,8 @@ const createCard = (cityObj, icon) => {
 
 
 
+
+
 //  set local time
 const timeDisplay = document.getElementById("time-zone");
 
@@ -189,6 +201,9 @@ function refreshTime() {
 }
 setInterval(refreshTime, 1000);
 //   end local time
+
+
+
 
 
 const getApi = async (city) => {

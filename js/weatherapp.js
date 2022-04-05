@@ -1,52 +1,6 @@
+import { addForm, cityListHome } from "./addingCity.js";
 import { addOption, getApi, createCard, selectCity, removeCard } from "./function.js";
 
-let cityListHome;
-let time;
-
-
-//     LocalStorage check
-try {
-    cityListHome = JSON.parse(localStorage.getItem("cities").split(","));
-} catch {
-    cityListHome = [
-        {
-            city: "Catania",
-            icon: "features/liotru.jpg"
-        }, 
-        { 
-            city: "Enna",
-            icon: "features/rocca-cerere.jpg"
-        }, 
-        {
-            city: "Caltanissetta",
-            icon: "features/fontana-tritone.jpg"
-        },
-        {
-            city: "Siracusa",
-            icon: "features/dionisio.jpg"
-        },
-        {
-            city: "Ragusa",
-            icon: "features/castello-di-donnafugata.jpg"
-        },
-        {
-            city: "Agrigento",
-            icon: "features/concordia.jpg"
-        },
-        {
-            city: "Messina",
-            icon: "features/catalani.jpg"
-        },
-        {
-            city: "Trapani",
-            icon: "features/Castello-della-Colombaia.jpg"
-        },
-        {
-            city: "Palermo",
-            icon: "features/vergogna.jpg"
-        } 
-    ];
-}
 
 // Loading cities & creating card & filter
 for(let i = 0; i < cityListHome.length; i++) {
@@ -76,3 +30,11 @@ for(let i = 0; i < cityListHome.length; i++) {
         //                  END     FILTER       CITY
     });
 }
+
+
+// form
+document.getElementById("add").addEventListener("click", () => {
+    addForm();
+    document.getElementById("add").classList.remove("add-btn");
+    document.getElementById("add").classList.add("hidden");
+});

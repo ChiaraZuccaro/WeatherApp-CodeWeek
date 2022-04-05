@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather app</title>
+    <link rel="icon" sizes="192x192" href="img/sicily-logo.png">
+    <title>Sicily weather</title>
 
     <link rel="stylesheet" href="css/weatherStyle.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -29,15 +30,14 @@
     <div id="time-zone"></div>
 
     <!-- display saves -->
-    <section class="saved-city">
-    </section>
+    <section class="saved-city"></section>
 
     <!-- display all city -->
     <section id="city-list"></section>
 
     <!-- add a city -->
     <section class="add-city">
-
+        <button id="add" type="button" class="add-btn">Add a city</button>
     </section>
 
 
@@ -47,5 +47,6 @@
 
     <script src="js/weatherapp.js" type="module"></script>
     <script src="js/function.js" type="module"></script>
+    <script src="js/addingCity.js" type="module"></script>
 </body>
 </html>
