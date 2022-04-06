@@ -1,4 +1,4 @@
-import { q, cityListComplete, fieldResetSaves } from "./addingCity.js";
+import { q, cityListComplete, fieldResetSaves, zoomCity } from "./addingCity.js";
 import { addOption, getApi, createCard, selectCity, removeCard } from "./function.js";
 
 const radioButtons = document.querySelectorAll("input[name='saves']");
@@ -13,6 +13,13 @@ for(let i = 0; i < cityListComplete.length; i++) {
         const cardEls = document.querySelectorAll(".card");
         const selector = document.querySelector("#city-selector"); 
 
+
+        cardEls.forEach((element) => {
+            element.addEventListener("click", () => {
+                q(".overlay-zoom").classList.remove("hidden");
+                zoomCity(element);
+            });
+        });
 
 
         //                        FILTER       CITY

@@ -1,3 +1,5 @@
+import { getApi } from "./function.js";
+
 const q = (selector) => document.querySelector(selector);
 
 const cityListHome = [
@@ -68,4 +70,36 @@ function fieldResetSaves() {
 }
 
 
-export { q, cityListComplete, fieldResetSaves}
+const zoomedCard = (data, listEl) => {
+    const divAll = document.createElement("div");
+
+    const imgBack = document.createElement("img");
+
+    imgBack.setAttribute("src", `${listEl.icon}`);
+    imgBack.setAttribute("alt", "background image");
+
+    
+}
+
+const zoomCity = (card) => {
+   const cityName = card.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("");
+
+   console.log(cityName);
+
+   getApi(cityName).then((data) => {
+       for(let i = 0; i < cityListComplete.length; i++) {
+           if(cityListComplete[i].city.includes(cityName)) {
+                q(".zoomed").append(zoomedCard(data, cityListComplete[i]));
+                break;
+            }    
+        }
+   });
+
+   
+   q(".overlay-zoom").addEventListener("click", () => {
+       q(".zoomed").removeChild(card);
+       q(".overlay-zoom").classList.add("hidden");
+   });
+}
+
+export { q, cityListComplete, fieldResetSaves, zoomCity}

@@ -28,7 +28,6 @@ const removeCard = () => {
 }
 const selectCity = (card) => {
     removeCard();
-    // q("#city-list").append(card);
     q(".saved-city").append(card);
 }
 //            END   TO   FILTER    CITY
