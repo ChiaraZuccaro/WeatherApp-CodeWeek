@@ -73,6 +73,7 @@ header .options #city-selector:focus {
 /*              SAVES     SECTION          */
 .saves-section {
     margin: 10px auto;
+    padding: 20px 0;
 
     border-top: 2px solid black;
     border-bottom: 2px solid black;    
@@ -82,12 +83,12 @@ header .options #city-selector:focus {
     background: -webkit-linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
     background: linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
 }
-.saves-section #seaves-h2 {
+.saves-section #saves-h2 {
     text-align: center;
     font-size: 28px;
     font-family: 'Pacifico', cursive;
 
-    margin: 20px 0;
+    margin: 5px 0;
 }
 .saved-city {
     display: flex;
@@ -104,7 +105,7 @@ header .options #city-selector:focus {
 
 
 /*      CONTAINER CARD       */
-#city-list {
+.city-list {
     display: flex;
     flex-flow: row wrap;
     gap: 40px;
@@ -635,7 +636,7 @@ footer a {
     .saves-section #seaves-h2 {
         font-size: 28px;
     
-        margin: 20px 0;
+        margin: 5px 0;
     }
 
 

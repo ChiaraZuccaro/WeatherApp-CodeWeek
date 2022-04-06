@@ -19,13 +19,17 @@ for(let i = 0; i < cityListComplete.length; i++) {
         selector.addEventListener("click", () => {    
             if(selector.selectedIndex > 0 && selector.selectedIndex <= cityListComplete.length) {            
                 cardEls.forEach(element => {
-                    if(element.outerHTML.toLowerCase().split("").join("").includes(selector.value)) {
+                    if(element.outerHTML.toLowerCase().split("").join("").includes(selector.value)) { 
+                        
+                        console.log("diverso da zero");
+                        document.getElementById("saves-h2").style.display = "none";
                         selectCity(element);
                     }
                 });
-            } else {
+            } else if(selector.selectedIndex == 0) {
                 removeCard();
 
+                document.getElementById("saves-h2").style.display = "block";
                 getApi(cityListComplete[i].city).then((data) => {
                     createCard(data, cityListComplete[i]);
                 });

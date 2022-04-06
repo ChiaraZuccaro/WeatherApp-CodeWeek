@@ -18,8 +18,9 @@ const addOption = (city) => {
 //               TO    FILTER     CITY
 const removeCard = () => {    
     const divEl = document.querySelectorAll(".card");
+
     try {        
-        divEl.forEach((card) => q("#city-list").removeChild(card));
+        divEl.forEach((card) => q(".city-list").removeChild(card));
     }
     catch {        
         divEl.forEach((card) => q(".saved-city").removeChild(card));
@@ -27,6 +28,7 @@ const removeCard = () => {
 }
 const selectCity = (card) => {
     removeCard();
+    // q("#city-list").append(card);
     q(".saved-city").append(card);
 }
 //            END   TO   FILTER    CITY
@@ -157,7 +159,7 @@ const createCard = (cityObj, city) => {
     if(city.saves == "yes") {
         q(".saved-city").append(divWrap);
     } else
-    q("#city-list").append(divWrap);
+    q(".city-list").append(divWrap);
 }
 //                            END      CARD      CITY
 
