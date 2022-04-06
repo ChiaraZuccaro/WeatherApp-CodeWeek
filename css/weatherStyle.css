@@ -564,6 +564,10 @@ footer a {
         background-image: url("./background-form-m.jpg");
     }
 
+    #time-zone {    
+        font-size: 40px;
+    }
+
 }
 
 @media (min-width: 800px) {
@@ -571,11 +575,35 @@ footer a {
     .add-city::before {
         background-image: url("./background-form-t.jpg");
     }
+
+    #time-zone {    
+        font-size: 50px;
+    }
 }
 
 @media (min-width: 1500px) {
     
+    .add-city {
+        height: 500px;
+    }
     .add-city::before {
         background-image: url("./background-form-d.jpg");
+    }
+
+    .add-city form {
+        height: 450px;
+
+        gap: 40px;
+
+        padding: 20px 0;
+    }
+    .add-city form h3 {
+        font-size: 35px;
+    }
+    .add-city form .user-add label{
+        font-size: 18px;
+    }
+    .add-city form .all-check {
+        font-size: 18px;
     }
 }
