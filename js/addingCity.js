@@ -34,17 +34,17 @@ const cityListHome = [
     {
         city: "Messina",
         icon: "features/catalani.jpg",
-        saves: ""
+        saves: "no"
     },
     {
         city: "Trapani",
         icon: "features/Castello-della-Colombaia.jpg",
-        saves: ""
+        saves: "no"
     },
     {
         city: "Palermo",
         icon: "features/vergogna.jpg",
-        saves: ""
+        saves: "yes"
     } 
 ];
 let cityListStorage;
@@ -54,8 +54,7 @@ let cityListComplete;
 //     LocalStorage check
 try {
     cityListStorage = JSON.parse(localStorage.getItem("cities").split(","));
-    cityListHome.push(cityListStorage);
-    cityListComplete = cityListHome;
+    cityListComplete = cityListStorage;
 } catch {
     cityListComplete = cityListHome;
 }

@@ -11,8 +11,10 @@ for(let i = 0; i < cityListComplete.length; i++) {
         createCard(data, cityListComplete[i]);
     }).then(() => {        
         const cardEls = document.querySelectorAll(".card");
-        const selector = document.querySelector("#city-selector");
-        
+        const selector = document.querySelector("#city-selector"); 
+
+
+
         //                        FILTER       CITY
         selector.addEventListener("click", () => {    
             if(selector.selectedIndex > 0 && selector.selectedIndex <= cityListComplete.length) {            
@@ -21,14 +23,14 @@ for(let i = 0; i < cityListComplete.length; i++) {
                         selectCity(element);
                     }
                 });
-            } else {        
+            } else {
                 removeCard();
+
                 getApi(cityListComplete[i].city).then((data) => {
                     createCard(data, cityListComplete[i]);
                 });
             }
         });
-        
         //                  END     FILTER       CITY
     });
 }
@@ -36,7 +38,9 @@ for(let i = 0; i < cityListComplete.length; i++) {
 
 // form
 document.getElementById("confirm").addEventListener("click", () => {
+
     event.preventDefault();
+
     const inputCity = q("#city");
     const inputImg = q("#img");
 
@@ -55,12 +59,10 @@ document.getElementById("confirm").addEventListener("click", () => {
     });
 
     console.log(cityListComplete);
-        
-    for(let i = 0; i < cityListComplete.length; i++) {
-        localStorage.setItem("cities", JSON.stringify(cityListComplete[i]));
-        console.log("storage");
-    }
+    localStorage.setItem("cities", JSON.stringify(cityListComplete));
+    
     inputCity.value = "";
     inputImg.value = "";
     fieldResetSaves();
+    location.reload();
 });

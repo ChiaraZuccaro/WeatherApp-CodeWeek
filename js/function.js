@@ -18,11 +18,17 @@ const addOption = (city) => {
 //               TO    FILTER     CITY
 const removeCard = () => {    
     const divEl = document.querySelectorAll(".card");
-    divEl.forEach((card) => q("#city-list").removeChild(card));
+    try {        
+        divEl.forEach((card) => q("#city-list").removeChild(card));
+    }
+    catch {        
+        divEl.forEach((card) => q(".saved-city").removeChild(card));
+    }
 }
 const selectCity = (card) => {
     removeCard();
-    q("#city-list").append(card);
+    // q("#city-list").append(card);
+    q(".saved-city").append(card);
 }
 //            END   TO   FILTER    CITY
 
@@ -80,6 +86,7 @@ const cardRight = (main, city) => {
 
     imgSave.classList.add("hidden");
 
+    imgSave.id = "star";
     imgSave.src = "img/star.png";
     imgSave.alt = "save icon";
     imgSave.setAttribute("width","24px");
@@ -140,6 +147,9 @@ const createCard = (cityObj, city) => {
 
     divAll.append( divLeft, cardRight(cityObj.main, city));
 
+    if(city.saves == "yes") {
+        q(".saved-city").append(divAll);
+    } else
     q("#city-list").append(divAll);
 }
 //                            END      CARD      CITY
