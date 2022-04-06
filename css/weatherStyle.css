@@ -237,16 +237,19 @@ header .options #city-selector:focus {
 
     width: 70%;
 
-    background: #bdca09;
-    background: -moz-linear-gradient(45deg, #bdca09 0%, #ffffffab 50%, #b80303 100%);
-    background: -webkit-linear-gradient(45deg, #bdca09 0%, #ffffffab 50%, #b80303 100%);
-    background: linear-gradient(45deg, #bdca09 0%, #ffffffab 50%, #b80303 100%);
+    background-image: url(./background-form-hd.jpg);
+    background-size: cover;
+    background-position: center;
 
     -webkit-box-shadow: 8px 8px 15px 6px #000000; 
     box-shadow: 8px 8px 15px 6px black;
 
     border: 2px #000000 solid;
     border-radius: 30px;
+}
+.add-city form h3 {
+    font-size: 30px;
+    font-family: 'Pacifico', cursive;
 }
 .add-city form .user-add {
     display: flex;
@@ -255,18 +258,21 @@ header .options #city-selector:focus {
 
     width: 80%;
 
-    background-color: rgba(56,202,255,0.5);
+    background-color: rgba(56,202,255,0.8);
 
     padding: 10px 20px;
 
+    border: 1px #000000 solid;
     border-radius: 20px;
 }
 .add-city form .user-add label {
     font-family: 'Kanit', sans-serif;
     align-self: center;
+    width: 60%;
 }
 .add-city form .user-add input {
     padding: 3px 8px;
+    margin: 3px 10px;
 
     border: none;
     border-bottom: 2px solid #000000;
@@ -283,10 +289,10 @@ header .options #city-selector:focus {
     font-size: 20px;    
     font-family: 'Pacifico', cursive;
 
-    border: none;
+    border: 1px #000000 solid;
     border-radius: 20px;
 
-    background-color: rgba(56,202,255,0.5);
+    background-color: rgba(56,202,255,0.8);
 }
 .add-city form #confirm:hover {
     color: rgba(56,202,255,1);
@@ -304,10 +310,11 @@ header .options #city-selector:focus {
 
     width: 80%;
 
-    background-color: rgba(56,202,255,0.5);
+    background-color: rgba(56,202,255,0.8);
 
     padding: 10px 20px;
 
+    border: 1px #000000 solid;
     border-radius: 20px;
 
     font-family: 'Kanit', sans-serif;
@@ -324,6 +331,9 @@ header .options #city-selector:focus {
     align-items: center;
     gap: 5px;
 }
+/* .add-city .all-check .choice input {
+
+} */
 .add-city .add-btn {
     display: block;
 

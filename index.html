@@ -37,7 +37,31 @@
 
     <!-- add a city -->
     <section class="add-city">
-        <button id="add" type="button" class="add-btn">Add a city</button>
+        <form>
+            <h3>Let's add your city!</h3>
+            <div class="user-add">
+                <label for="city">Where are you from? (or you can write any city you want)</label>
+                <input id="city" type="text" placeholder="write here the city...">
+            </div>
+            <div class="user-add">
+                <label for="img">What is the most iconic monument?</label>
+                <input id="img" type="url" placeholder="an url is needed">
+            </div>
+            <div class="all-check">
+                <p>Do you want it in saves?</p>
+                <div class="choice">
+                    <div class="labels">
+                        <label for="yes-check">Yes</label>
+                        <input id="yes-check" type="radio" name="saves" value="yes">
+                    </div>
+                    <div class="labels">
+                        <label for="no-check">No</label>
+                        <input id="no-check" type="radio" name="saves" value="no">
+                    </div>
+                </div>
+            </div>
+            <button id="confirm" type="submit">Confirm</button>
+        </form>
     </section>
 
 
