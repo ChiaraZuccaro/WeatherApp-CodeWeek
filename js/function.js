@@ -82,8 +82,8 @@ const cardRight = (main, city) => {
 
     imgSave.src = "img/star.png";
     imgSave.alt = "save icon";
-    imgSave.setAttribute("width","16px");
-    imgSave.setAttribute("height", "auto");
+    imgSave.setAttribute("width","24px");
+    imgSave.setAttribute("height", "24px");
 
     if(city.saves == "yes"){
         imgSave.classList.remove("hidden");

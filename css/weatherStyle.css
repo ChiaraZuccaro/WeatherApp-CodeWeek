@@ -193,7 +193,7 @@ header .options #city-selector:focus {
     justify-content: space-between;
 }
 .card .right-side .temp .temp-star img {
-    height: 16px;
+    /* height: 16px; */
 
     align-self: center;
 }
