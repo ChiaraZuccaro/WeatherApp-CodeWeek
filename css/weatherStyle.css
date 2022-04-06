@@ -71,22 +71,31 @@ header .options #city-selector:focus {
 
 
 /*              SAVES     SECTION          */
+.saves-section {
+    margin: 10px auto;
+
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;    
+
+    background: #E2DA13;
+    background: -moz-linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
+    background: -webkit-linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
+    background: linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
+}
+.saves-section #seaves-h2 {
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Pacifico', cursive;
+
+    margin: 20px 0;
+}
 .saved-city {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     gap: 40px;
 
-    margin: 10px auto;
     padding: 20px 0 25px 0;
-
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-
-    background: #E2DA13;
-    background: -moz-linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
-    background: -webkit-linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
-    background: linear-gradient(45deg, #E2DA13 0%, #FFFFFF 50%, #E21C1C 100%);
 }
 /*           END    SAVES     SECTION      */
 
@@ -161,6 +170,25 @@ header .options #city-selector:focus {
 
 /*        CARD     STYLE       */
 .card {
+    width: 400px;
+
+    position: relative; 
+    border-radius: 30px;
+}
+.card .overlay {
+    background-color: #000000;
+    opacity: 0.5;
+
+    width: 400px;
+    height: 273px;
+    
+    border-radius: 30px;
+
+    position: absolute;
+}
+.card .all-info {
+    position: relative;
+
     width: 350px;
 
     display: flex;
@@ -175,10 +203,9 @@ header .options #city-selector:focus {
     box-shadow: 8px 8px 15px 6px black;
 
     color: rgb(213, 234, 253);
-    background: #FFFFFF;
     text-shadow: 2px 2px 0px #000000, 3px 3px 3px rgba(56,202,255,1);
 }
-.card .left-side {
+.card .all-info .left-side {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -187,13 +214,13 @@ header .options #city-selector:focus {
 
     padding: 10px;
 }
-.card .left-side h2 {
+.card .all-info .left-side h2 {
     font-family: 'Lobster', cursive;
     font-size: 30px;
 }
 
 
-.card .right-side {    
+.card .all-info .right-side {    
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -203,14 +230,14 @@ header .options #city-selector:focus {
 
     padding: 15px 5px;
 }
-.card .right-side .temp {
+.card .all-info .right-side .temp {
     display: flex;
     flex-flow: column nowrap;
     gap: 5px;
 
     width: 100%;
 }
-.card .right-side .temp .temp-star {
+.card .all-info .right-side .temp .temp-star {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -220,32 +247,32 @@ header .options #city-selector:focus {
 
     align-self: center;
 }
-.card .right-side .temp h3 {
+.card .all-info .right-side .temp h3 {
     align-self: left;
 
     font-family: 'Pacifico', cursive;
     font-size: 30px;
 }
-.card .right-side .temp p {
+.card .all-info .right-side .temp p {
     align-self: flex-end;
 }
-.card .right-side .bottom-card {
+.card .all-info .right-side .bottom-card {
     display: flex;
     flex-flow: column nowrap;
     align-items: end;
 
     width: 100%;
 }
-.card .right-side .bottom-card .min-max {
+.card .all-info .right-side .bottom-card .min-max {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 
-    width: 70%;
+    width: 100%;
 }
-.card .right-side .bottom-card .min-max h6 {
+.card .all-info .right-side .bottom-card .min-max h6 {
     font-family: 'Kanit', sans-serif;
 }
 /*   END      CARD     STYLE   */
@@ -415,6 +442,23 @@ footer a {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*         MEDIA    QUERY        */
 @media (min-width: 300px) {   
     header {        
@@ -443,6 +487,13 @@ footer a {
 
     #time-zone {    
         font-size: 25px;
+    }
+
+
+    .saves-section h2 {
+        font-size: 24px;
+    
+        margin: 15px 0;
     }
 
     
@@ -486,10 +537,15 @@ footer a {
     }
 
 
-
-
     .card {
         width: 250px;
+    }
+    .card .overlay {
+        width: 250px;
+        height: 249px;
+    }
+    .card .all-info {
+        width: 240px;
 
         padding: 5px;
     }
@@ -505,9 +561,6 @@ footer a {
     .card .right-side .temp p {
         font-size: 13px;
     }
-    .card .right-side .bottom-card .min-max {
-        width: 100%;
-    }
 }
 
 @media (min-width: 412px) {
@@ -522,11 +575,17 @@ footer a {
         font-size: 15px;
     }
 
-
     .card {
         width: 350px;
+    }
+    .card .overlay {
+        width: 350px;
+        height: 263px;
+    }
+    .card .all-info{
+        width: 310px;
 
-        padding: 15px 25px;
+        padding: 10px 20px;
     }
     .card .left-side img {
         width: 120px;
@@ -534,7 +593,10 @@ footer a {
 
     }
     .card .left-side h2 {
+        /* align-self: flex-start; */
         font-size: 30px;
+
+        margin: 0;
     }
     .card .right-side {
         padding: 10px 5px;
@@ -567,6 +629,13 @@ footer a {
         width: 300px;
 
         font-size: 20px;
+    }
+
+
+    .saves-section #seaves-h2 {
+        font-size: 28px;
+    
+        margin: 20px 0;
     }
 
 
@@ -607,6 +676,16 @@ footer a {
     
     .add-city::before {
         background-image: url("./background-form-t.jpg");
+    }
+
+    .card {
+        width: 400px;
+    }
+    .card .overlay {
+        width: 400px;
+    }
+    .card .all-info {
+        width: 360px;
     }
 
     #time-zone {    

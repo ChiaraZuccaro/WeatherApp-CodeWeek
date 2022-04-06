@@ -5,7 +5,7 @@ const addOption = (city) => {
     const optionEl = document.createElement("option");
 
     optionEl.classList.add("opt");
-    
+
     optionEl.value = `${city.toLowerCase()}`;
     optionEl.textContent = `${city}`;
 
@@ -27,7 +27,6 @@ const removeCard = () => {
 }
 const selectCity = (card) => {
     removeCard();
-    // q("#city-list").append(card);
     q(".saved-city").append(card);
 }
 //            END   TO   FILTER    CITY
@@ -118,8 +117,10 @@ const cardRight = (main, city) => {
    return divAllRight;
 }
 const createCard = (cityObj, city) => {
+    const divWrap = document.createElement("div");
     const divAll = document.createElement("div");
     const divLeft = document.createElement("div");
+    const divLayout = document.createElement("div");
     
     const imgWeather = document.createElement("img");
     imgWeather.setAttribute("alt", "weather img");
@@ -140,17 +141,23 @@ const createCard = (cityObj, city) => {
     divLeft.append(imgWeather, cityName);
     // END    OF   CREATING  THE   LEFT    SIDE   OF   THE    CARD 
 
-    divAll.style.backgroundImage = `url(${city.icon})`;
-    divAll.style.backgroundPosition = "center";
-    divAll.style.backgroundSize = "cover";
-    divAll.classList.add("card");
+    divWrap.style.backgroundImage = `url(${city.icon})`;
+    divWrap.style.backgroundPosition = "center";
+    divWrap.style.backgroundSize = "cover";
+
+    divLayout.classList.add("overlay");
+
+    divWrap.classList.add("card");
+
+    divAll.classList.add("all-info");
 
     divAll.append( divLeft, cardRight(cityObj.main, city));
+    divWrap.append(divLayout, divAll);
 
     if(city.saves == "yes") {
-        q(".saved-city").append(divAll);
+        q(".saved-city").append(divWrap);
     } else
-    q("#city-list").append(divAll);
+    q("#city-list").append(divWrap);
 }
 //                            END      CARD      CITY
 
