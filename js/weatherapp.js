@@ -1,12 +1,14 @@
-import { q, cityListComplete } from "./addingCity.js";
+import { q, cityListComplete, fieldResetSaves } from "./addingCity.js";
 import { addOption, getApi, createCard, selectCity, removeCard } from "./function.js";
+
+const radioButtons = document.querySelectorAll("input[name='saves']");
 
 
 // Loading cities & creating card & filter
 for(let i = 0; i < cityListComplete.length; i++) {
     addOption(cityListComplete[i].city);
     getApi(cityListComplete[i].city).then((data) => {
-        createCard(data, cityListComplete[i].icon);
+        createCard(data, cityListComplete[i]);
     }).then(() => {        
         const cardEls = document.querySelectorAll(".card");
         const selector = document.querySelector("#city-selector");
@@ -22,7 +24,7 @@ for(let i = 0; i < cityListComplete.length; i++) {
             } else {        
                 removeCard();
                 getApi(cityListComplete[i].city).then((data) => {
-                    createCard(data, cityListComplete[i].icon);
+                    createCard(data, cityListComplete[i]);
                 });
             }
         });
@@ -38,10 +40,18 @@ document.getElementById("confirm").addEventListener("click", () => {
     const inputCity = q("#city");
     const inputImg = q("#img");
 
+    let ans;
+    for (const radioButton of radioButtons ) {
+        if (radioButton.checked) {
+            ans = radioButton.value;
+            break;
+        }
+    };
+
     cityListComplete.push({
         city: inputCity.value,
         icon: inputImg.value,
-        saves: ""
+        saves: `${ans}`
     });
 
     console.log(cityListComplete);
@@ -52,4 +62,5 @@ document.getElementById("confirm").addEventListener("click", () => {
     }
     inputCity.value = "";
     inputImg.value = "";
+    fieldResetSaves();
 });

@@ -71,10 +71,23 @@ const cardRightBottom = (main) => {
     return divBottomRight;
 }
 //  create the right side of the card
-const cardRight = (main) => {
+const cardRight = (main, city) => {
     const divAllRight = document.createElement("div");
-    const divTempTop = document.createElement("div");
+    const divTop = document.createElement("div");
+    const divStarTemp = document.createElement("div");
 
+    const imgSave = document.createElement("img");
+
+    imgSave.classList.add("hidden");
+
+    imgSave.src = "img/star.png";
+    imgSave.alt = "save icon";
+    imgSave.setAttribute("width","16px");
+    imgSave.setAttribute("height", "auto");
+
+    if(city.saves == "yes"){
+        imgSave.classList.remove("hidden");
+    }
 
     //    CREATING  THE   RIGHT  TOP    SIDE   OF   THE    CARD 
     const temp = document.createElement("h3");
@@ -83,18 +96,21 @@ const cardRight = (main) => {
     temp.textContent = `${parseInt(main.temp)} °C`;
     feelTemp.textContent = `wind chill ${main.feels_like} °C`;
 
-    divTempTop.append( temp, feelTemp);
-    divTempTop.classList.add("temp");
+    divStarTemp.classList.add("temp-star");
+    divStarTemp.append(temp, imgSave);
+
+    divTop.append( divStarTemp, feelTemp);
+    divTop.classList.add("temp");
 
     //    END    OF   CREATING  THE   RIGHT   TOP    SIDE   OF   THE    CARD 
 
 
-   divAllRight.append(divTempTop, cardRightBottom(main));
+   divAllRight.append(divTop, cardRightBottom(main));
    divAllRight.classList.add("right-side");
 
    return divAllRight;
 }
-const createCard = (cityObj, icon) => {
+const createCard = (cityObj, city) => {
     const divAll = document.createElement("div");
     const divLeft = document.createElement("div");
     
@@ -117,12 +133,12 @@ const createCard = (cityObj, icon) => {
     divLeft.append(imgWeather, cityName);
     // END    OF   CREATING  THE   LEFT    SIDE   OF   THE    CARD 
 
-    divAll.style.backgroundImage = `url(${icon})`;
+    divAll.style.backgroundImage = `url(${city.icon})`;
     divAll.style.backgroundPosition = "center";
     divAll.style.backgroundSize = "cover";
     divAll.classList.add("card");
 
-    divAll.append( divLeft, cardRight(cityObj.main));
+    divAll.append( divLeft, cardRight(cityObj.main, city));
 
     q("#city-list").append(divAll);
 }

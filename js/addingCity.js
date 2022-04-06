@@ -4,32 +4,32 @@ const cityListHome = [
     {
         city: "Catania",
         icon: "features/liotru.jpg",
-        saves: ""
+        saves: "yes"
     }, 
     { 
         city: "Enna",
         icon: "features/rocca-cerere.jpg",
-        saves: ""
+        saves: "no"
     }, 
     {
         city: "Caltanissetta",
         icon: "features/fontana-tritone.jpg",
-        saves: ""
+        saves: "no"
     },
     {
         city: "Syracuse",
         icon: "features/dionisio.jpg",
-        saves: ""
+        saves: "no"
     },
     {
         city: "Ragusa",
         icon: "features/castello-di-donnafugata.jpg",
-        saves: ""
+        saves: "no"
     },
     {
         city: "Agrigento",
         icon: "features/concordia.jpg",
-        saves: ""
+        saves: "no"
     },
     {
         city: "Messina",

@@ -187,6 +187,16 @@ header .options #city-selector:focus {
 
     width: 100%;
 }
+.card .right-side .temp .temp-star {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.card .right-side .temp .temp-star img {
+    height: 16px;
+
+    align-self: center;
+}
 .card .right-side .temp h3 {
     align-self: left;
 
