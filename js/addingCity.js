@@ -259,18 +259,40 @@ const zoomedCard = (data, listEl) => {
     divAll.classList.add("zoomed-card");
     divAll.append( zoomTop(data, listEl), zoomDown(data));
 
-    q(".zoomed").append(divAll);
+   return divAll;
 }
 
 const zoomCity = (card, data) => {
    const cityName = card.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("");
+   const divOverDrop = document.createElement("div");
+   const divDrop = document.createElement("div");
+
+   const deleteOpt = document.createElement("h4");
+   const saveOpt = document.createElement("h4");
+
+   divOverDrop.classList.add("overlay-drop");
+   divOverDrop.classList.add("hidden");
+
+   deleteOpt.textContent = "Delete city";
+   saveOpt.textContent = "Put in saves";
+
+   divDrop.classList.add("drop-menu");
+   divDrop.classList.add("hidden");
+   divDrop.append( deleteOpt, saveOpt);
 
    for(let i = 0; i < data.length; i++) {
-        if(data[i].name.toLowerCase() == cityName.toLowerCase()){
-            zoomedCard(data[i], cityListComplete[i]);
+        if(data[i].name.toLowerCase() == cityName.toLowerCase()){            
+            q(".zoomed").append(divOverDrop ,divDrop, zoomedCard(data[i], cityListComplete[i]));
         }
     }
 
+
+    q(".drop").addEventListener("click", () => {
+        divOverDrop.classList.remove("hidden");
+        divDrop.classList.remove("hidden");
+
+        console.log("drop click");
+    });
    
    q(".overlay-zoom").addEventListener("click", () => {
        q(".zoomed").removeChild(q(".zoomed-card"));

@@ -11,7 +11,59 @@ html, body {
 }
 
 
+.overlay-drop {
+    position: fixed;
+    top: -10%;
+    left: -10%;
 
+    width: 120%;
+    height: 120%;
+
+    z-index: 888;
+
+    background-color: #000000;
+
+    opacity: 0.7;
+}
+.drop-menu {
+    position: fixed;    
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 999;
+
+    background-color: rgb(233, 78, 39);
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 150px;
+}
+.drop-menu h4 {
+    padding: 20px 35px;
+
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+
+    cursor: pointer;
+}
+.drop-menu h4:hover {
+    background-color: #000000;
+    color: rgb(233, 78, 39);
+
+    border-radius: 20px;
+
+    transition: all 0.3s ease-in-out;
+}
 .overlay-zoom {
     position: fixed;
 
@@ -22,7 +74,7 @@ html, body {
 
     opacity: 0.7;
 
-    z-index: 8888;
+    z-index: 666;
 }
 .zoomed {
     position: fixed;
@@ -31,7 +83,7 @@ html, body {
 
     transform: translate(-50%, -50%);
 
-    z-index: 9999;
+    z-index: 777;
 }
 .zoomed-card {
     width: 1000px;
