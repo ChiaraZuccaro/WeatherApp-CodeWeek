@@ -16,15 +16,15 @@ const addOption = (city) => {
 
 
 //               TO    FILTER     CITY
-const removeCard = () => {    
-    const divEl = document.querySelectorAll(".card");
+const removeCard = () => { 
+    const cardEl = document.querySelectorAll(".card");
 
     try {        
-        divEl.forEach((card) => q(".city-list").removeChild(card));
+        cardEl.forEach((card) => q(".saved-city").removeChild(card));
+    } catch {
+        cardEl.forEach((card) => q(".city-list").removeChild(card));
     }
-    catch {        
-        divEl.forEach((card) => q(".saved-city").removeChild(card));
-    }
+
 }
 const selectCity = (card) => {
     removeCard();
@@ -242,9 +242,15 @@ setInterval(refreshTime, 1000);
 
 
 const getApi = async (cityList) => {
-    const res = await 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=602e9e1a06c28fdda7a4dc03a03ca575&units=metric`);
-    return await res.json();
+    let dataList = [];
+    for(let i = 0; i < cityList.length; i++) {
+        const res = await 
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityList[i].city}&appid=602e9e1a06c28fdda7a4dc03a03ca575&units=metric`);
+        const data = await res.json();
+        dataList.push(data);
+    }
+
+    return dataList;
 }
 
 export { addOption, getApi, createCard, selectCity, removeCard }

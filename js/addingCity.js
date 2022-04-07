@@ -69,6 +69,9 @@ function fieldResetSaves() {
     }
 }
 
+
+
+
 const zoomDown = (data) => {    
     const divBottom = document.createElement("div");
 
@@ -224,19 +227,14 @@ const zoomedCard = (data, listEl) => {
     q(".zoomed").append(divAll);
 }
 
-const zoomCity = (card) => {
+const zoomCity = (card, data) => {
    const cityName = card.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("");
 
-   console.log(cityName);
-
-   getApi(cityName.toLowerCase()).then((data) => {
-       for(let i = 0; i < cityListComplete.length; i++) {
-           if(cityListComplete[i].city.includes(cityName)) {
-                q(".zoomed").append(zoomedCard(data, cityListComplete[i]));
-                break;
-            }    
+   for(let i = 0; i < data.length; i++) {
+        if(data[i].name.toLowerCase() == cityName.toLowerCase()){
+            zoomedCard(data[i], cityListComplete[i]);
         }
-   });
+    }
 
    
    q(".overlay-zoom").addEventListener("click", () => {
