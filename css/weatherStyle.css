@@ -409,6 +409,8 @@ header .options #city-selector:focus {
 
     position: relative; 
     border-radius: 30px;
+
+    cursor: pointer;
 }
 .card .overlay {
     background-color: #000000;

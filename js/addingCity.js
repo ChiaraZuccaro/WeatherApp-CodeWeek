@@ -71,6 +71,36 @@ function fieldResetSaves() {
 
 
 
+const deleteCity = (card) => {
+    const cityDel = card.querySelector("h2").outerHTML.split("<h2>")
+    .splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase();
+
+    const newArray = cityListComplete.filter((element) => cityDel.toLowerCase().includes(element.city.toLowerCase()) !== true);
+
+    return newArray;
+}
+
+const changeSave = (card) => {    
+    const cityDel = card.querySelector("h2").outerHTML.split("<h2>")
+    .splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase();
+
+    const newArray = cityListComplete.filter((element) => {
+        if(cityDel.toLowerCase().includes(element.city.toLowerCase())){
+            if(element.saves == "yes"){
+                alert("This city is already in saves!");
+            }
+            else {
+                return;
+            }
+        }        
+    });
+
+    console.log(newArray);
+
+    return newArray;
+}
+
+
 
 const zoomMinMax = (data) => {
     const divMinMax = document.createElement("div");
@@ -274,7 +304,9 @@ const zoomCity = (card, data) => {
    divOverDrop.classList.add("overlay-drop");
    divOverDrop.classList.add("hidden");
 
+   deleteOpt.setAttribute("id", "delete");
    deleteOpt.textContent = "Delete city";
+   saveOpt.setAttribute("id", "save");
    saveOpt.textContent = "Put in saves";
 
    dropAllH4.classList.add("all-h4");
@@ -292,16 +324,51 @@ const zoomCity = (card, data) => {
         }
     }
 
-
     q(".drop").addEventListener("click", () => {
         divOverDrop.classList.remove("hidden");
         divDrop.classList.remove("hidden");
         
         divDrop.append( dropAllH4);
 
-        console.log("drop click");
+        q("#delete").addEventListener("click", () => {
+            const newArray = deleteCity(card);
+
+            localStorage.setItem("cities", JSON.stringify(newArray));
+            
+            q(".drop-menu").removeChild(q(".all-h4"));
+            q(".drop-menu").classList.add("hidden");
+            q(".overlay-drop").classList.add("hidden");
+
+            q(".zoomed").removeChild(q(".zoomed-card"));
+            q(".zoomed").removeChild(q(".overlay-drop"));
+            q(".zoomed").removeChild(q(".drop-menu"));
+            
+            q(".overlay-zoom").classList.add("hidden");
+
+            location.reload();
+        });
+
+        
+        q("#save").addEventListener("click", () => {
+            const newArray = changeSave(card);
+
+            // localStorage.setItem("cities", JSON.stringify(newArray));
+
+            q(".drop-menu").removeChild(q(".all-h4"));
+            q(".drop-menu").classList.add("hidden");
+            q(".overlay-drop").classList.add("hidden");
+
+            q(".zoomed").removeChild(q(".zoomed-card"));
+            q(".zoomed").removeChild(q(".overlay-drop"));
+            q(".zoomed").removeChild(q(".drop-menu"));
+            
+            q(".overlay-zoom").classList.add("hidden");
+        });
     });
-   
+
+
+
+
    q(".overlay-zoom").addEventListener("click", () => {
        q(".zoomed").removeChild(q(".zoomed-card"));
        q(".zoomed").removeChild(q(".overlay-drop"));

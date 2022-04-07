@@ -19,10 +19,10 @@ const addOption = (city) => {
 const removeCard = () => { 
     const cardEl = document.querySelectorAll(".card");
 
-    try {        
-        cardEl.forEach((card) => q(".saved-city").removeChild(card));
-    } catch {
+    try {
         cardEl.forEach((card) => q(".city-list").removeChild(card));
+    } catch {
+        cardEl.forEach((card) => q(".saved-city").removeChild(card));
     }
 
 }
