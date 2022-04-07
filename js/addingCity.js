@@ -131,50 +131,53 @@ const zoomDown = (data) => {
     gif.setAttribute("height", "auto");
 
     temp.textContent = `${parseInt(data.main.temp)} °C`;
-
-    if(parseInt(data.main.temp) > 23) {
-        gif.classList.remove("hidden");
-        gif.classList.add("gif");
-        gif.setAttribute("src", "https://thumbs.gfycat.com/QuerulousElectricJohndory-size_restricted.gif");
-
-        suggestWeather.textContent = "It is too hot outside! Keep yourself safe, stay hydrated";
-    } else if(parseInt(data.main.temp) < 8) {
-        gif.classList.remove("hidden");        
-        gif.classList.add("gif");
-        gif.setAttribute("src", "https://media.giphy.com/media/3o7TKoHNJTWWLgljYQ/giphy.gif");
-
-        suggestWeather.textContent = "It is too cold outside! Put on your better coat and stay warm";
-    } else {        
-    }
     
     divTempGif.classList.add("gif-temp");
-    divTempGif.append( gif, temp);
+    divTempGif.append(temp, gif);
 
     //    END  TEMPERATURE + GIF
 
 
 
 
-    data.weather.map((element) => {
+    data.weather.map((element) => {        
+        gif.classList.remove("hidden");        
+        gif.classList.add("gif");
+
         if(element.main.toLowerCase() == "clouds") {
             imgWeather.setAttribute("src", "img/cloud.png");
             
-            gif.classList.remove("hidden");        
-            gif.classList.add("gif");
-            gif.setAttribute("src", "https://th.bing.com/th/id/R.37d8874773efdd17149c554bcc902a57?rik=mEub9th7CCUDaA&riu=http%3a%2f%2fstatic.skaip.org%2fimg%2femoticons%2f180x180%2ff6fcff%2fumbrella.gif&ehk=Htk7j1TdO2JW9iRxG9vOA7hVG4iCTtRIeBPVSqLz9EI%3d&risl=&pid=ImgRaw&r=0");
+
+            if(parseInt(data.main.temp) > 25){
+                gif.setAttribute("src", "https://thumbs.gfycat.com/QuerulousElectricJohndory-size_restricted.gif");
+                suggestWeather.textContent = "It is too hot outside! Keep yourself safe, stay hydrated";
+            } else if(parseInt(data.main.temp) < 8){
+                gif.setAttribute("src", "https://media.giphy.com/media/3o7TKoHNJTWWLgljYQ/giphy.gif");
+                suggestWeather.textContent = "It is too cold outside! Put on your better coat and stay warm";
+            } else {                
+                gif.setAttribute("src", "https://th.bing.com/th/id/R.d538f7976546294953deda9d409725bf?rik=%2fF8L9Hl1vnsETQ&pid=ImgRaw&r=0");
+                suggestWeather.textContent = "It may be raining, bring with you the umbrella";
+            }
     
-            suggestWeather.textContent = "It may be raining, bring with you the umbrella";
 
         } else if(element.main.toLowerCase() == "rain") {
             imgWeather.setAttribute("src", "img/cloud+rain.png");
+
+            gif.setAttribute("src", "https://i.pinimg.com/originals/59/d3/8d/59d38df8aa1cfd7dea36105ea470f27f.gif");
+            suggestWeather.textContent = "It's raining, stay at home if you can";
         } else if(element.main.toLowerCase() == "clear"){            
             imgWeather.setAttribute("src", "img/sun.png");
 
-            gif.classList.remove("hidden");        
-            gif.classList.add("gif");
-            gif.setAttribute("src", "https://cdn.dribbble.com/users/68398/screenshots/2560830/lex_dribbble.gif");
-    
-            suggestWeather.textContent = "It's a good day to go for a walk!";
+            if(parseInt(data.main.temp) > 25){
+                gif.setAttribute("src", "https://thumbs.gfycat.com/QuerulousElectricJohndory-size_restricted.gif");
+                suggestWeather.textContent = "It is too hot outside! Keep yourself safe, stay hydrated";
+            } else if(parseInt(data.main.temp) < 8) {
+                gif.setAttribute("src", "https://media.giphy.com/media/3o7TKoHNJTWWLgljYQ/giphy.gif");
+                suggestWeather.textContent = "It is too cold outside! Put on your better coat and stay warm";
+            } else {                
+                gif.setAttribute("src", "https://cdn.dribbble.com/users/68398/screenshots/2560830/lex_dribbble.gif");    
+                suggestWeather.textContent = "It's a good time to go for a walk!";
+            }
         }
 
                         
@@ -275,11 +278,13 @@ const zoomCity = (card, data) => {
    saveOpt.textContent = "Put in saves";
 
    dropAllH4.classList.add("all-h4");
+   dropAllH4.style.backgroundImage = "url('https://media.giphy.com/media/xTiN0IuPQxRqzxodZm/giphy.gif')";
+   dropAllH4.style.backgroundPosition = "center";
+   dropAllH4.style.backgroundSize = "cover";
    dropAllH4.append(deleteOpt, saveOpt);
 
    divDrop.classList.add("drop-menu");
    divDrop.classList.add("hidden");
-   divDrop.append( dropAllH4);
 
    for(let i = 0; i < data.length; i++) {
         if(data[i].name.toLowerCase() == cityName.toLowerCase()){            
@@ -291,12 +296,16 @@ const zoomCity = (card, data) => {
     q(".drop").addEventListener("click", () => {
         divOverDrop.classList.remove("hidden");
         divDrop.classList.remove("hidden");
+        
+        divDrop.append( dropAllH4);
 
         console.log("drop click");
     });
    
    q(".overlay-zoom").addEventListener("click", () => {
        q(".zoomed").removeChild(q(".zoomed-card"));
+       q(".zoomed").removeChild(q(".overlay-drop"));
+       q(".zoomed").removeChild(q(".drop-menu"));
        q(".overlay-zoom").classList.add("hidden");
    });
 

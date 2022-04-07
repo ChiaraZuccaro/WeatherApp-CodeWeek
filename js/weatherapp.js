@@ -44,12 +44,12 @@ dataList.then((data) => {
                 createCard(data[i], cityListComplete[i]);
             }
             console.log(cardEls);
-            cardEls.forEach((element) => {
-                element.addEventListener("click", () => {
-                    q(".overlay-zoom").classList.remove("hidden");
-                    zoomCity(element, data);
-                });
-            });
+            // cardEls.forEach((element) => {
+            //     element.addEventListener("click", () => {
+            //         q(".overlay-zoom").classList.remove("hidden");
+            //         zoomCity(element, data);
+            //     });
+            // });
         }
     });
     //                  END     FILTER       CITY
