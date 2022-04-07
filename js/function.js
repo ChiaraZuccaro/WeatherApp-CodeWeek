@@ -28,6 +28,7 @@ const removeCard = () => {
 }
 const selectCity = (card) => {
     removeCard();
+
     q(".saved-city").append(card);
 }
 //            END   TO   FILTER    CITY
@@ -240,7 +241,7 @@ setInterval(refreshTime, 1000);
 
 
 
-const getApi = async (city) => {
+const getApi = async (cityList) => {
     const res = await 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=602e9e1a06c28fdda7a4dc03a03ca575&units=metric`);
     return await res.json();

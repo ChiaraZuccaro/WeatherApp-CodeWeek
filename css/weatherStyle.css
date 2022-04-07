@@ -29,7 +29,101 @@ html, body {
     top: 50%;
     left: 50%;
 
+    transform: translate(-50%, -50%);
+
     z-index: 9999;
+}
+.zoomed-card {
+    width: 1000px;
+    height: 800px;
+
+    font-size: 25px;
+}
+.zoomed-card .bottom-zoom {
+    height: 500px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    padding: 10px 25px;
+
+    background-color: #CCCCCC;
+
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-bottom-left-radius: 30px;
+}
+.zoomed-card .bottom-zoom .left-zoom {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.zoomed-card .bottom-zoom .right-zoom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 50%;
+
+    padding: 15px 20px;
+}
+.zoomed-card .bottom-zoom .right-zoom .minmax-zoom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 70%;
+}
+.zoomed-card .bottom-zoom .right-zoom .minmax-zoom .only-zoom {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.zoomed-card .top-zoom {
+    height: 250px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    -webkit-border-top-left-radius: 30px;
+    -webkit-border-top-right-radius: 30px;
+    -moz-border-radius-topleft: 30px;
+    -moz-border-radius-topright: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.zoomed-card .top-zoom .save-zoom {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    justify-content: center;
+
+    margin: 0 15px;
+}
+.zoomed-card .top-zoom .save-zoom #star {
+    padding: 10px 0;
+    margin: 0 auto;
+}
+.zoomed-card .top-zoom .city-zoom {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+
+    padding: 10px 20px;
+}
+.zoomed-card .top-zoom .city-zoom h1 {
+    font-size: 50px;    
+    font-family: 'Lobster', cursive;
+
+    color: #CCCCCC;
+}
+.zoomed-card .top-zoom .city-zoom p {
+    align-self: flex-end;
 }
 
 
