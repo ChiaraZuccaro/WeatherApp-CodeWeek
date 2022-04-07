@@ -72,18 +72,8 @@ function fieldResetSaves() {
 
 
 
-const zoomDown = (data) => {    
-    const divBottom = document.createElement("div");
-
-    const divRight = document.createElement("div");
-    const divLeft = document.createElement("div");
-
-    const divTempGif = document.createElement("div");
+const zoomMinMax = (data) => {
     const divMinMax = document.createElement("div");
-
-
-
-    //             MIN    MAX
 
     const divMin = document.createElement("div");
     const divMax = document.createElement("div");
@@ -114,15 +104,25 @@ const zoomDown = (data) => {
     divMinMax.classList.add("minmax-zoom");
     divMinMax.append( divMin, divMax, divHum);
 
-    //            END   MIN    MAX
+    return divMinMax;
+}
+const zoomDown = (data) => {    
+    const divBottom = document.createElement("div");
 
+    const divRight = document.createElement("div");
+    const divLeft = document.createElement("div");
 
+    const divTempGif = document.createElement("div");
 
+    
+    const imgWeather = document.createElement("img");
+    const descWeather = document.createElement("p");
+    const suggestWeather = document.createElement("p");
     
 
     //     TEMPERATURE + GIF
     const temp = document.createElement("h3");
-    const gif = document.createElement("img"); //optional
+    const gif = document.createElement("img");
 
     gif.classList.add("hidden");
     
@@ -154,12 +154,9 @@ const zoomDown = (data) => {
 
 
 
-    const imgWeather = document.createElement("img");
-    const descWeather = document.createElement("p");
-    const suggestWeather = document.createElement("p");
 
-    data.weather.map((data) => {
-        if(data.main.toLowerCase() == "clouds") {
+    data.weather.map((element) => {
+        if(element.main.toLowerCase() == "clouds") {
             imgWeather.setAttribute("src", "img/cloud.png");
             
             gif.classList.remove("hidden");        
@@ -168,9 +165,9 @@ const zoomDown = (data) => {
     
             suggestWeather.textContent = "It may be raining, bring with you the umbrella";
 
-        } else if(data.main.toLowerCase() == "rain") {
+        } else if(element.main.toLowerCase() == "rain") {
             imgWeather.setAttribute("src", "img/cloud+rain.png");
-        } else {            
+        } else if(element.main.toLowerCase() == "clear"){            
             imgWeather.setAttribute("src", "img/sun.png");
 
             gif.classList.remove("hidden");        
@@ -181,7 +178,7 @@ const zoomDown = (data) => {
         }
 
                         
-        descWeather.textContent = `${data.description}`;
+        descWeather.textContent = `${element.description}`;
     });
 
     imgWeather.setAttribute("alt", "weather icon");
@@ -194,7 +191,7 @@ const zoomDown = (data) => {
     
 
     divRight.classList.add("right-zoom");
-    divRight.append( divTempGif, divMinMax);
+    divRight.append( divTempGif, zoomMinMax(data));
 
     divBottom.style.backgroundImage = "url('img/earth-plane.png')";
     divBottom.style.backgroundPosition = "center";
