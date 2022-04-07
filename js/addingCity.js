@@ -118,6 +118,41 @@ const zoomDown = (data) => {
 
 
 
+    
+
+    //     TEMPERATURE + GIF
+    const temp = document.createElement("h3");
+    const gif = document.createElement("img"); //optional
+
+    gif.classList.add("hidden");
+    
+    gif.setAttribute("alt", "gif icon");
+    gif.setAttribute("width", "200px");
+    gif.setAttribute("height", "auto");
+
+    temp.textContent = `${parseInt(data.main.temp)} °C`;
+
+    if(parseInt(data.main.temp) > 23) {
+        gif.classList.remove("hidden");
+        gif.classList.add("gif");
+        gif.setAttribute("src", "https://thumbs.gfycat.com/QuerulousElectricJohndory-size_restricted.gif");
+
+        suggestWeather.textContent = "It is too hot outside! Keep yourself safe, stay hydrated";
+    } else if(parseInt(data.main.temp) < 8) {
+        gif.classList.remove("hidden");        
+        gif.classList.add("gif");
+        gif.setAttribute("src", "https://media.giphy.com/media/3o7TKoHNJTWWLgljYQ/giphy.gif");
+
+        suggestWeather.textContent = "It is too cold outside! Put on your better coat and stay warm";
+    } else {        
+    }
+    
+    divTempGif.classList.add("gif-temp");
+    divTempGif.append( gif, temp);
+
+    //    END  TEMPERATURE + GIF
+
+
 
     const imgWeather = document.createElement("img");
     const descWeather = document.createElement("p");
@@ -126,10 +161,23 @@ const zoomDown = (data) => {
     data.weather.map((data) => {
         if(data.main.toLowerCase() == "clouds") {
             imgWeather.setAttribute("src", "img/cloud.png");
+            
+            gif.classList.remove("hidden");        
+            gif.classList.add("gif");
+            gif.setAttribute("src", "https://th.bing.com/th/id/R.37d8874773efdd17149c554bcc902a57?rik=mEub9th7CCUDaA&riu=http%3a%2f%2fstatic.skaip.org%2fimg%2femoticons%2f180x180%2ff6fcff%2fumbrella.gif&ehk=Htk7j1TdO2JW9iRxG9vOA7hVG4iCTtRIeBPVSqLz9EI%3d&risl=&pid=ImgRaw&r=0");
+    
+            suggestWeather.textContent = "It may be raining, bring with you the umbrella";
+
         } else if(data.main.toLowerCase() == "rain") {
             imgWeather.setAttribute("src", "img/cloud+rain.png");
         } else {            
             imgWeather.setAttribute("src", "img/sun.png");
+
+            gif.classList.remove("hidden");        
+            gif.classList.add("gif");
+            gif.setAttribute("src", "https://cdn.dribbble.com/users/68398/screenshots/2560830/lex_dribbble.gif");
+    
+            suggestWeather.textContent = "It's a good day to go for a walk!";
         }
 
                         
@@ -141,23 +189,6 @@ const zoomDown = (data) => {
     imgWeather.setAttribute("height", "auto");
 
 
-    //     TEMPERATURE + GIF
-    const temp = document.createElement("h3");
-    const gif = document.createElement("img"); //optional
-
-    gif.classList.add("hidden");
-
-    temp.textContent = `${parseInt(data.main.temp)} °C`;
-    
-    divTempGif.classList.add("gif-temp");
-    divTempGif.append( gif, temp);
-
-    //    END  TEMPERATURE + GIF
-
-
-
-
-
     divLeft.classList.add("left-zoom");
     divLeft.append( imgWeather, descWeather, suggestWeather);
     
@@ -165,6 +196,10 @@ const zoomDown = (data) => {
     divRight.classList.add("right-zoom");
     divRight.append( divTempGif, divMinMax);
 
+    divBottom.style.backgroundImage = "url('img/earth-plane.png')";
+    divBottom.style.backgroundPosition = "center";
+    divBottom.style.backgroundSize = "contain";
+    divBottom.style.backgroundRepeat = "no-repeat";
     divBottom.classList.add("bottom-zoom");
     divBottom.append( divLeft, divRight);
 
@@ -188,8 +223,8 @@ const zoomTop = (cityObj, listEl) => {
 
     imgDrop.src = "img/menu.png";
     imgDrop.alt = "drop icon";
-    imgDrop.setAttribute("width","32px");
-    imgDrop.setAttribute("height", "32px");
+    imgDrop.setAttribute("width","125px");
+    imgDrop.setAttribute("height", "125px");
 
     imgSave.classList.add("hidden");
 

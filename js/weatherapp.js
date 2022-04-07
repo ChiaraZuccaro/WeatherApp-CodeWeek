@@ -23,13 +23,14 @@ dataList.then((data) => {
     });
 
 
+
+
+
     //                        FILTER       CITY
     selector.addEventListener("click", () => {    
-        if(selector.selectedIndex > 0 && selector.selectedIndex <= data.length) {            
+        if(selector.selectedIndex > 0 && selector.selectedIndex <= data.length) {
             cardEls.forEach(element => {
-                if(element.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("").includes(selector.value)) { 
-                    
-                    console.log(element.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join(""));
+                if(element.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase() == selector.value) { 
                     document.getElementById("saves-h2").style.display = "none";
                     selectCity(element);
                 }
@@ -41,6 +42,13 @@ dataList.then((data) => {
             for(let i = 0; i < data.length; i++) {
                 createCard(data[i], cityListComplete[i]);
             }
+            console.log(cardEls);
+            cardEls.forEach((element) => {
+                element.addEventListener("click", () => {
+                    q(".overlay-zoom").classList.remove("hidden");
+                    zoomCity(element, data);
+                });
+            });
         }
     });
     //                  END     FILTER       CITY
