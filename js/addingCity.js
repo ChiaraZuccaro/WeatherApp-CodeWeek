@@ -266,6 +266,7 @@ const zoomCity = (card, data) => {
    const cityName = card.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("");
    const divOverDrop = document.createElement("div");
    const divDrop = document.createElement("div");
+   const dropAllH4 = document.createElement("div");
 
    const deleteOpt = document.createElement("h4");
    const saveOpt = document.createElement("h4");
@@ -276,9 +277,12 @@ const zoomCity = (card, data) => {
    deleteOpt.textContent = "Delete city";
    saveOpt.textContent = "Put in saves";
 
+   dropAllH4.classList.add("all-h4");
+   dropAllH4.append(deleteOpt, saveOpt);
+
    divDrop.classList.add("drop-menu");
    divDrop.classList.add("hidden");
-   divDrop.append( deleteOpt, saveOpt);
+   divDrop.append( dropAllH4);
 
    for(let i = 0; i < data.length; i++) {
         if(data[i].name.toLowerCase() == cityName.toLowerCase()){            
@@ -298,6 +302,12 @@ const zoomCity = (card, data) => {
        q(".zoomed").removeChild(q(".zoomed-card"));
        q(".overlay-zoom").classList.add("hidden");
    });
+
+   q(".overlay-drop").addEventListener("click", () => {
+        q(".drop-menu").removeChild(q(".all-h4"));
+        q(".drop-menu").classList.add("hidden");
+        q(".overlay-drop").classList.add("hidden");
+    });
 }
 
 export { q, cityListComplete, fieldResetSaves, zoomCity}

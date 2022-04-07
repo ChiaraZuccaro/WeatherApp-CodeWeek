@@ -14,10 +14,10 @@ html, body {
 .overlay-drop {
     position: fixed;
     top: -10%;
-    left: -10%;
+    left: -70%;
 
-    width: 120%;
-    height: 120%;
+    width: 2000%;
+    height: 2000%;
 
     z-index: 888;
 
@@ -46,7 +46,7 @@ html, body {
     justify-content: center;
     align-items: center;
 
-    gap: 150px;
+    gap: 50px;
 }
 .drop-menu h4 {
     padding: 20px 35px;
