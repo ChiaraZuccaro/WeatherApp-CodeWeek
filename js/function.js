@@ -1,5 +1,6 @@
 import { q } from "./addingCity.js";
 
+let hour, mofter;
 
 const addOption = (city) => {
     const optionEl = document.createElement("option");
@@ -143,8 +144,16 @@ const createCard = (cityObj, city) => {
     const imgWeather = document.createElement("img");
     imgWeather.setAttribute("alt", "weather img");
 
-    cityObj.weather.map((data) => data.main.toLowerCase() == "clouds" ? imgWeather.setAttribute("src", "img/cloud.png") :
-    data.main.toLowerCase() == "rain" ? imgWeather.setAttribute("src", "img/cloud+rain.png") : imgWeather.setAttribute("src", "img/sun.png"));
+    cityObj.weather.map((data) => {
+        if(data.main.toLowerCase() == "clouds") {
+            imgWeather.setAttribute("src", "img/cloud.png");
+        } else if(data.main.toLowerCase() == "rain") {
+            imgWeather.setAttribute("src", "img/cloud+rain.png");
+        } else {
+            // if(document.getElementById("hour").join(""))
+            imgWeather.setAttribute("src", "img/sun.png");
+        }
+    });
 
     imgWeather.setAttribute("width", "120px");
     imgWeather.setAttribute("height", "auto");
@@ -230,6 +239,9 @@ const localTime = (datatime) => {
     const minute = document.createElement("h4");
     const seconds = document.createElement("h4");
 
+    hour = timeData.split(":")[0];
+    mofter = timeData.split(":")[2];
+
     hours.textContent = `${timeData.split(":")[0]}:`;
     minute.textContent = `${timeData.split(":")[1]}:`;
     seconds.textContent = `${timeData.split(":")[2]}`;
@@ -254,9 +266,6 @@ setInterval(refreshTime, 1000);
 //   end local time
 
 
-
-
-
 const getApi = async (cityList) => {
     let dataList = [];
     for(let i = 0; i < cityList.length; i++) {
@@ -269,4 +278,4 @@ const getApi = async (cityList) => {
     return dataList;
 }
 
-export { addOption, getApi, createCard, selectCity, removeCard }
+export { addOption, getApi, createCard, selectCity, removeCard, mofter, hour }

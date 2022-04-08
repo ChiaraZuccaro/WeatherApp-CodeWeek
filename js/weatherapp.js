@@ -1,5 +1,5 @@
 import { q, cityListComplete, fieldResetSaves, zoomCity } from "./addingCity.js";
-import { addOption, getApi, createCard, selectCity, removeCard } from "./function.js";
+import { addOption, getApi, createCard, selectCity, removeCard, mofter, hour } from "./function.js";
 
 const radioButtons = document.querySelectorAll("input[name='saves']");
 
@@ -24,11 +24,8 @@ dataList.then((data) => {
 
         });
     });
-
     
-    console.log(cardEls);
-
-
+    
 
     //                        FILTER       CITY
     selector.addEventListener("click", () => {    

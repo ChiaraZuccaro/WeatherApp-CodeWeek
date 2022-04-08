@@ -75,6 +75,8 @@ const deleteCity = (card) => {
     const cityDel = card.querySelector("h2").outerHTML.split("<h2>")
     .splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase();
 
+    console.log(cityDel);
+
     const newArray = cityListComplete.filter((element) => cityDel.toLowerCase().includes(element.city.toLowerCase()) !== true);
 
     return newArray;
@@ -183,7 +185,7 @@ const zoomDown = (data) => {
             imgWeather.setAttribute("src", "img/cloud.png");
             
 
-            if(parseInt(data.main.temp) > 25){
+            if(parseInt(data.main.temp) >= 25){
                 gif.setAttribute("src", "https://thumbs.gfycat.com/QuerulousElectricJohndory-size_restricted.gif");
                 suggestWeather.textContent = "It is too hot outside! Keep yourself safe, stay hydrated";
             } else if(parseInt(data.main.temp) < 8){
