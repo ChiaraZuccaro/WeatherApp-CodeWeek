@@ -5,6 +5,8 @@ const radioButtons = document.querySelectorAll("input[name='saves']");
 
 let dataList = getApi(cityListComplete);
 
+
+
 // Loading cities & creating card & filter
 dataList.then((data) => {    
     for(let i = 0; i < data.length; i++) {
@@ -23,7 +25,8 @@ dataList.then((data) => {
         });
     });
 
-
+    
+    console.log(cardEls);
 
 
 
@@ -33,6 +36,7 @@ dataList.then((data) => {
             cardEls.forEach(element => {
                 if(element.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase() == selector.value) { 
                     document.getElementById("saves-h2").style.display = "none";
+                    removeCard();
                     selectCity(element);
                 }
             });
@@ -43,13 +47,16 @@ dataList.then((data) => {
             for(let i = 0; i < data.length; i++) {
                 createCard(data[i], cityListComplete[i]);
             }
-            console.log(cardEls);
+            
+            // console.log(cardEls);
             // cardEls.forEach((element) => {
             //     element.addEventListener("click", () => {
+            //         console.log(element);
             //         q(".overlay-zoom").classList.remove("hidden");
             //         zoomCity(element, data);
             //     });
             // });
+            
         }
     });
     //                  END     FILTER       CITY

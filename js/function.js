@@ -19,17 +19,33 @@ const addOption = (city) => {
 const removeCard = () => { 
     const cardEl = document.querySelectorAll(".card");
 
-    try {
-        cardEl.forEach((card) => q(".city-list").removeChild(card));
-    } catch {
-        cardEl.forEach((card) => q(".saved-city").removeChild(card));
-    }
+    cardEl.forEach((card) => {
+        if(card.querySelector(".hidden") != null){
+            q(".city-list").removeChild(card);
+            console.log("eliminate da city list");
+        } else {
+            q(".saved-city").removeChild(card);
+            console.log("eliminate da saves");
+        }
+    });
+
+    // cardEl.querySelectorAll(".hidden")
+
+    // try {
+    //     cardEl.forEach((card) => q(".city-list").removeChild(card));
+    // } catch {
+    //     cardEl.forEach((card) => q(".saved-city").removeChild(card));
+    // }
 
 }
 const selectCity = (card) => {
-    removeCard();
-
-    q(".saved-city").append(card);
+    if(card.querySelector(".hidden") != null){
+        q(".city-list").append(card);
+        console.log("messo in city list");
+    } else {
+        q(".saved-city").append(card);
+        console.log("messo in saves");
+    }
 }
 //            END   TO   FILTER    CITY
 

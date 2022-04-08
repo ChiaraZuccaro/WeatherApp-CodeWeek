@@ -703,7 +703,104 @@ footer a {
 
 
 /*         MEDIA    QUERY        */
-@media (min-width: 300px) {   
+@media (min-width: 300px) {
+
+    .zoomed-card {
+        width: 280px;
+        height: 650px;
+
+        font-size: 15px;
+    }
+    .zoomed-card .bottom-zoom {
+        height: 450px;
+
+        padding: 10px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom {
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+
+        width: 50%;
+
+        padding: 20px 5px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom img {
+        width: 100px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom p {
+        font-size: 20px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom {
+        width: 50%;
+        
+        padding: 10px 15px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif-temp {
+        gap: 30px;
+
+        width: 100%;
+
+        padding: 0 30px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom h3 {
+        font-size: 40px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif {
+        width: 100px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom {
+        gap: 20px;
+
+        width: 100%;
+
+        padding: 15px 0;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom .only-zoom {
+        padding: 5px 15px;
+    }
+    .zoomed-card .top-zoom {
+        padding: 0 13px;
+
+        height: 180px;
+    }
+    .zoomed-card .top-zoom .save-zoom {
+        justify-content: space-around;
+        align-items: flex-end;
+
+        gap: 35px;
+
+        margin: 0 8px;
+
+        width: 30%;
+    }
+    .zoomed-card .top-zoom .save-zoom .drop {
+        width: 60px;
+        height: auto;
+
+    }
+    .zoomed-card .top-zoom .save-zoom #star {
+        width: 20px;
+        height: auto;
+        
+        margin: 0 15px;
+    }
+    .zoomed-card .top-zoom .city-zoom {
+        width: 40%;
+
+        gap: 20px;
+
+        padding: 15px 10px;
+    }
+    .zoomed-card .top-zoom .city-zoom h1 {
+        font-size: 25px;
+    }
+
+
+
+
+
+
     header {        
         padding: 5px;
     }
@@ -807,6 +904,94 @@ footer a {
 }
 
 @media (min-width: 412px) {
+
+    .zoomed-card {
+        width: 380px;
+        height: 700px;
+
+        font-size: 18px;
+    }
+    .zoomed-card .bottom-zoom {
+        height: 500px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom {        
+        align-items: flex-start;
+        text-align: start;
+
+        padding: 20px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom img {
+        width: 120px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom p {
+        font-size: 23px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom {
+        width: 50%;
+        
+        padding: 10px 15px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif-temp {
+        gap: 30px;
+
+        width: 100%;
+
+        padding: 0 30px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom h3 {
+        font-size: 50px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif {
+        width: 150px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom {
+        gap: 20px;
+
+        width: 80%;
+
+        padding: 15px 0;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom .only-zoom {
+        padding: 5px 15px;
+    }
+    .zoomed-card .top-zoom {
+        padding: 0 13px;
+
+        height: 180px;
+    }
+    .zoomed-card .top-zoom .save-zoom {
+        gap: 35px;
+
+        margin: 0 8px;
+
+        width: 30%;
+    }
+    .zoomed-card .top-zoom .save-zoom .drop {
+        width: 80px;
+        height: auto;
+
+    }
+    .zoomed-card .top-zoom .save-zoom #star {
+        padding: 10px 0;
+        margin: 0 25px;
+        
+        width: 24px;
+    }
+    .zoomed-card .top-zoom .city-zoom {
+        width: 40%;
+
+        gap: 20px;
+
+        padding: 15px 10px;
+    }
+    .zoomed-card .top-zoom .city-zoom h1 {
+        font-size: 33px;
+
+        margin: 20px 0;
+    }
+
+
+
     
     .add-city::before {
         background-image: url("./background-form-sm.jpg");
@@ -858,6 +1043,104 @@ footer a {
 }
 
 @media (min-width: 600px) {
+
+    header .options label {
+        display: none;
+    }
+
+
+    .zoomed-card {
+        width: 540px;
+        height: 750px;
+
+        font-size: 20px;
+    }
+    .zoomed-card .bottom-zoom {
+        height: 530px;
+
+        padding: 10px 15px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom {
+        justify-content: space-evenly;
+
+        width: 40%;
+
+        padding: 0 18px;
+    }
+    
+    .zoomed-card .bottom-zoom .left-zoom img {
+        width: 150px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom p {
+        font-size: 25px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom {
+        width: 60%;
+        
+        padding: 15px 20px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif-temp {
+        gap: 30px;
+
+        width: 100%;
+
+        padding: 0 30px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom h3 {
+        font-size: 50px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif {
+        width: 150px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom {
+        gap: 20px;
+
+        width: 80%;
+
+        padding: 30px 0;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom .only-zoom {
+        padding: 5px 15px;
+    }
+    .zoomed-card .top-zoom {
+        padding: 0 18px;
+
+        height: 200px;
+    }
+    .zoomed-card .top-zoom .save-zoom {
+        gap: 35px;
+
+        margin: 0 8px;
+
+        width: 30%;
+    }
+    .zoomed-card .top-zoom .save-zoom .drop {
+        width: 100px;
+        height: auto;
+
+    }
+    .zoomed-card .top-zoom .save-zoom #star {
+        padding: 10px 0;
+        margin: 0 40px;
+    }
+    .zoomed-card .top-zoom .city-zoom {
+        width: 40%;
+
+        gap: 20px;
+
+        padding: 10px 20px;
+    }
+    .zoomed-card .top-zoom .city-zoom h1 {
+        font-size: 38px;
+
+        margin: 20px 0;
+    }
+
+
+
+
+
+
     header .h1-logo img {
         width: 150px;
     }
@@ -916,6 +1199,81 @@ footer a {
 }
 
 @media (min-width: 800px) {
+
+    header .options label {
+        display: block;
+    }
+
+
+    .zoomed-card {
+        width: 750px;
+
+        font-size: 25px;
+    }
+    .zoomed-card .bottom-zoom {
+        height: 530px;
+
+        padding: 10px 25px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom {
+        width: 40%;
+
+        padding: 0 25px;
+    }
+    .zoomed-card .bottom-zoom .left-zoom p {
+        font-size: 30px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .gif-temp {
+        gap: 30px;
+
+        width: 100%;
+
+        padding: 0 30px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom h3 {
+        font-size: 60px;
+    }    
+    .zoomed-card .bottom-zoom .right-zoom .gif {
+        width: 200px;
+    }
+    .zoomed-card .bottom-zoom .right-zoom .minmax-zoom {
+        gap: 20px;
+
+        width: 70%;
+
+        padding: 30px 0;
+    }
+    .zoomed-card .top-zoom {
+        padding: 0 30px;
+
+        height: 250px;
+    }
+    .zoomed-card .top-zoom .save-zoom {
+        gap: 50px;
+
+        margin: 0 15px;
+
+        width: 30%;
+    }
+    .zoomed-card .top-zoom .save-zoom .drop {
+        width: 125px;        
+    }
+    .zoomed-card .top-zoom .save-zoom #star {
+        padding: 10px 0;
+        margin: 0 40px;
+    }
+    .zoomed-card .top-zoom .city-zoom {
+        width: 40%;
+
+        gap: 20px;
+
+        padding: 10px 20px;
+    }
+    .zoomed-card .top-zoom .city-zoom h1 {
+        font-size: 50px;
+    }
+
+
     
     .add-city::before {
         background-image: url("./background-form-t.jpg");
@@ -936,7 +1294,11 @@ footer a {
     }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1500px) {    
+    .zoomed-card {
+        width: 1000px;
+    }
+
     
     .add-city {
         height: 500px;
