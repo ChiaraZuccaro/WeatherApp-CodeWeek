@@ -84,20 +84,25 @@ const changeSave = (card) => {
     const cityDel = card.querySelector("h2").outerHTML.split("<h2>")
     .splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase();
 
-    const newArray = cityListComplete.filter((element) => {
-        if(cityDel.toLowerCase().includes(element.city.toLowerCase())){
-            if(element.saves == "yes"){
+
+    for(let i = 0; i < cityListComplete.length; i++){
+        if(cityDel.toLowerCase().includes(cityListComplete[i].city.toLowerCase())){
+            if(cityListComplete[i].saves == "yes"){
                 alert("This city is already in saves!");
+                const ans = prompt("Do you want to remove it from saves? y/n");
+                if (ans == "y"){
+                    cityListComplete[i].saves = "no";
+                } else if (ans == "n") {
+                    alert("Nothing has changed");
+                } else {
+                    alert("Something went wrong");
+                }
             }
-            else {
-                return;
+            else {                
+                cityListComplete[i].saves = "yes";
             }
-        }        
-    });
-
-    console.log(newArray);
-
-    return newArray;
+        }  
+    }
 }
 
 
@@ -350,9 +355,9 @@ const zoomCity = (card, data) => {
 
         
         q("#save").addEventListener("click", () => {
-            const newArray = changeSave(card);
+            changeSave(card);
 
-            // localStorage.setItem("cities", JSON.stringify(newArray));
+            localStorage.setItem("cities", JSON.stringify(cityListComplete));
 
             q(".drop-menu").removeChild(q(".all-h4"));
             q(".drop-menu").classList.add("hidden");
@@ -363,6 +368,8 @@ const zoomCity = (card, data) => {
             q(".zoomed").removeChild(q(".drop-menu"));
             
             q(".overlay-zoom").classList.add("hidden");
+
+            location.reload();
         });
     });
 
