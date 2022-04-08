@@ -704,6 +704,27 @@ footer a {
 
 /*         MEDIA    QUERY        */
 @media (min-width: 300px) {
+    .overlay-drop {
+        top: -50%;
+        left: -70%;
+    }
+
+    .drop-menu .all-h4 {
+        width: 250px;
+        height: 250px;
+    
+        gap: 30px;
+    }
+    .drop-menu .all-h4 h4 {
+        padding: 10px 20px;
+
+        font-size: 25px;
+    }
+
+
+
+
+
 
     .zoomed-card {
         width: 280px;
@@ -905,6 +926,23 @@ footer a {
 
 @media (min-width: 412px) {
 
+    .drop-menu .all-h4 {
+        width: 350px;
+        height: 350px;
+    
+        gap: 40px;
+    }
+    .drop-menu .all-h4 h4 {
+        padding: 15px 30px;
+
+        font-size: 35px;
+    }
+
+
+
+
+
+
     .zoomed-card {
         width: 380px;
         height: 700px;
@@ -1047,6 +1085,25 @@ footer a {
     header .options label {
         display: none;
     }
+
+
+    .drop-menu .all-h4 {    
+        width: 450px;
+        height: 450px;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        gap: 50px;
+    }
+    .drop-menu .all-h4 h4 {
+        padding: 20px 35px;
+
+        font-size: 40px;
+    }
+
 
 
     .zoomed-card {
@@ -1204,9 +1261,16 @@ footer a {
         display: block;
     }
 
+    .overlay-drop {
+        top: -10%;
+    
+        width: 2000%;
+        height: 2000%;
+    }
 
     .zoomed-card {
         width: 750px;
+        height: 800px;
 
         font-size: 25px;
     }
