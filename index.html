@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather app</title>
+    <link rel="icon" sizes="192x192" href="img/sicily-logo.png">
+    <title>Sicily weather</title>
 
     <link rel="stylesheet" href="css/weatherStyle.css">
     <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
+    <div class="overlay-zoom hidden"></div>
+    <div class="zoomed"></div>
+
     <header>
         <div class="h1-logo">
             <img src="img/sicily-logo.png" alt="sicily logo" width="140px" height="auto">
@@ -29,15 +33,41 @@
     <div id="time-zone"></div>
 
     <!-- display saves -->
-    <section class="saved-city">
+    <section class="saves-section">
+        <h2 id="saves-h2">Your favorite cities</h2>
+        <div class="saved-city"></div>   
     </section>
 
     <!-- display all city -->
-    <section id="city-list"></section>
+    <section class="city-list"></section>
 
     <!-- add a city -->
     <section class="add-city">
-
+        <form>
+            <h3>Let's add your city!</h3>
+            <div class="user-add">
+                <label for="city">Where are you from? (or you can write any city you want)</label>
+                <input id="city" type="text" placeholder="write here the city...">
+            </div>
+            <div class="user-add">
+                <label for="img">What is the most iconic monument?</label>
+                <input id="img" type="url" placeholder="an url is needed">
+            </div>
+            <div class="all-check">
+                <p>Do you want it in saves?</p>
+                <div class="choice">
+                    <div class="labels">
+                        <label for="yes-check">Yes</label>
+                        <input id="yes-check" type="radio" name="saves" value="yes">
+                    </div>
+                    <div class="labels">
+                        <label for="no-check">No</label>
+                        <input id="no-check" type="radio" name="saves" value="no">
+                    </div>
+                </div>
+            </div>
+            <button id="confirm" type="submit">Confirm</button>
+        </form>
     </section>
 
 
@@ -47,5 +77,6 @@
 
     <script src="js/weatherapp.js" type="module"></script>
     <script src="js/function.js" type="module"></script>
+    <script src="js/addingCity.js" type="module"></script>
 </body>
 </html>

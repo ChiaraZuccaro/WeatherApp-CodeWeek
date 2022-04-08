@@ -1,78 +1,96 @@
-import { addOption, getApi, createCard, selectCity, removeCard } from "./function.js";
+import { q, cityListComplete, fieldResetSaves, zoomCity } from "./addingCity.js";
+import { addOption, getApi, createCard, selectCity, removeCard, mofter, hour } from "./function.js";
 
-let cityListHome;
-let time;
+const radioButtons = document.querySelectorAll("input[name='saves']");
+
+let dataList = getApi(cityListComplete);
 
 
-//     LocalStorage check
-try {
-    cityListHome = JSON.parse(localStorage.getItem("cities").split(","));
-} catch {
-    cityListHome = [
-        {
-            city: "Catania",
-            icon: "features/liotru.jpg"
-        }, 
-        { 
-            city: "Enna",
-            icon: "features/rocca-cerere.jpg"
-        }, 
-        {
-            city: "Caltanissetta",
-            icon: "features/fontana-tritone.jpg"
-        },
-        {
-            city: "Siracusa",
-            icon: "features/dionisio.jpg"
-        },
-        {
-            city: "Ragusa",
-            icon: "features/castello-di-donnafugata.jpg"
-        },
-        {
-            city: "Agrigento",
-            icon: "features/concordia.jpg"
-        },
-        {
-            city: "Messina",
-            icon: "features/catalani.jpg"
-        },
-        {
-            city: "Trapani",
-            icon: "features/Castello-della-Colombaia.jpg"
-        },
-        {
-            city: "Palermo",
-            icon: "features/vergogna.jpg"
-        } 
-    ];
-}
 
 // Loading cities & creating card & filter
-for(let i = 0; i < cityListHome.length; i++) {
-    addOption(cityListHome[i].city);
-    getApi(cityListHome[i].city).then((data) => {
-        createCard(data, cityListHome[i].icon);
-    }).then(() => {        
-        const cardEls = document.querySelectorAll(".card");
-        const selector = document.querySelector("#city-selector");
-        
-        //                        FILTER       CITY
-        selector.addEventListener("click", () => {    
-            if(selector.selectedIndex > 0 && selector.selectedIndex <= cityListHome.length) {            
-                cardEls.forEach(element => {
-                    if(element.outerHTML.toLowerCase().split("").join("").includes(selector.value)) {
-                        selectCity(element);
-                    }
-                });
-            } else {        
-                removeCard();
-                getApi(cityListHome[i].city).then((data) => {
-                    createCard(data, cityListHome[i].icon);
-                });
-            }
+dataList.then((data) => {    
+    for(let i = 0; i < data.length; i++) {
+        addOption(data[i].name);
+        createCard(data[i], cityListComplete[i]);
+    }
+    
+    const cardEls = document.querySelectorAll(".card");
+    const selector = document.querySelector("#city-selector"); 
+
+    cardEls.forEach((element) => {
+        element.addEventListener("click", () => {
+            q(".overlay-zoom").classList.remove("hidden");            
+            zoomCity(element, data);
+
         });
-        
-        //                  END     FILTER       CITY
     });
-}
+    
+    
+
+    //                        FILTER       CITY
+    selector.addEventListener("click", () => {    
+        if(selector.selectedIndex > 0 && selector.selectedIndex <= data.length) {
+            cardEls.forEach(element => {
+                if(element.querySelector("h2").outerHTML.split("<h2>").splice(1, 2).join("").split("</h2>").splice(0,1).join("").toLowerCase() == selector.value) { 
+                    document.getElementById("saves-h2").style.display = "none";
+                    removeCard();
+                    selectCity(element);
+                }
+            });
+        } else if(selector.selectedIndex == 0) {
+            removeCard();
+
+            document.getElementById("saves-h2").style.display = "block";
+            for(let i = 0; i < data.length; i++) {
+                createCard(data[i], cityListComplete[i]);
+            }
+            
+            // console.log(cardEls);
+            // cardEls.forEach((element) => {
+            //     element.addEventListener("click", () => {
+            //         console.log(element);
+            //         q(".overlay-zoom").classList.remove("hidden");
+            //         zoomCity(element, data);
+            //     });
+            // });
+            
+        }
+    });
+    //                  END     FILTER       CITY
+});
+      
+
+
+
+
+
+// form
+document.getElementById("confirm").addEventListener("click", () => {
+
+    event.preventDefault();
+
+    const inputCity = q("#city");
+    const inputImg = q("#img");
+
+    let ans;
+    for (const radioButton of radioButtons ) {
+        if (radioButton.checked) {
+            ans = radioButton.value;
+            break;
+        }
+    };
+
+    cityListComplete.push({
+        city: inputCity.value,
+        icon: inputImg.value,
+        saves: `${ans}`
+    });
+
+    console.log(cityListComplete);
+    localStorage.setItem("cities", JSON.stringify(cityListComplete));
+    
+    inputCity.value = "";
+    inputImg.value = "";
+    fieldResetSaves();
+    location.reload();
+});

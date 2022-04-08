@@ -1,26 +1,60 @@
-const q = (selector) => document.querySelector(selector);
+import { q } from "./addingCity.js";
+
+let hour, mofter;
 
 const addOption = (city) => {
     const optionEl = document.createElement("option");
 
     optionEl.classList.add("opt");
-    
+
     optionEl.value = `${city.toLowerCase()}`;
     optionEl.textContent = `${city}`;
 
     q("#city-selector").append(optionEl);
 }
 
+
+
+
 //               TO    FILTER     CITY
-const removeCard = () => {    
-    const divEl = document.querySelectorAll(".card");
-    divEl.forEach((card) => q("#city-list").removeChild(card));
+const removeCard = () => { 
+    const cardEl = document.querySelectorAll(".card");
+
+    cardEl.forEach((card) => {
+        if(card.querySelector(".hidden") != null){
+            q(".city-list").removeChild(card);
+            console.log("eliminate da city list");
+        } else {
+            q(".saved-city").removeChild(card);
+            console.log("eliminate da saves");
+        }
+    });
+
+    // cardEl.querySelectorAll(".hidden")
+
+    // try {
+    //     cardEl.forEach((card) => q(".city-list").removeChild(card));
+    // } catch {
+    //     cardEl.forEach((card) => q(".saved-city").removeChild(card));
+    // }
+
 }
 const selectCity = (card) => {
-    removeCard();
-    q("#city-list").append(card);
+    if(card.querySelector(".hidden") != null){
+        q(".city-list").append(card);
+        console.log("messo in city list");
+    } else {
+        q(".saved-city").append(card);
+        console.log("messo in saves");
+    }
 }
 //            END   TO   FILTER    CITY
+
+
+
+
+
+
 
 //                                 CARD      CITY
 
@@ -61,10 +95,24 @@ const cardRightBottom = (main) => {
     return divBottomRight;
 }
 //  create the right side of the card
-const cardRight = (main) => {
+const cardRight = (main, city) => {
     const divAllRight = document.createElement("div");
-    const divTempTop = document.createElement("div");
+    const divTop = document.createElement("div");
+    const divStarTemp = document.createElement("div");
 
+    const imgSave = document.createElement("img");
+
+    imgSave.classList.add("hidden");
+
+    imgSave.id = "star";
+    imgSave.src = "img/star.png";
+    imgSave.alt = "save icon";
+    imgSave.setAttribute("width","24px");
+    imgSave.setAttribute("height", "24px");
+
+    if(city.saves == "yes"){
+        imgSave.classList.remove("hidden");
+    }
 
     //    CREATING  THE   RIGHT  TOP    SIDE   OF   THE    CARD 
     const temp = document.createElement("h3");
@@ -73,26 +121,39 @@ const cardRight = (main) => {
     temp.textContent = `${parseInt(main.temp)} °C`;
     feelTemp.textContent = `wind chill ${main.feels_like} °C`;
 
-    divTempTop.append( temp, feelTemp);
-    divTempTop.classList.add("temp");
+    divStarTemp.classList.add("temp-star");
+    divStarTemp.append(temp, imgSave);
+
+    divTop.append( divStarTemp, feelTemp);
+    divTop.classList.add("temp");
 
     //    END    OF   CREATING  THE   RIGHT   TOP    SIDE   OF   THE    CARD 
 
 
-   divAllRight.append(divTempTop, cardRightBottom(main));
+   divAllRight.append(divTop, cardRightBottom(main));
    divAllRight.classList.add("right-side");
 
    return divAllRight;
 }
-const createCard = (cityObj, icon) => {
+const createCard = (cityObj, city) => {
+    const divWrap = document.createElement("div");
     const divAll = document.createElement("div");
     const divLeft = document.createElement("div");
+    const divLayout = document.createElement("div");
     
     const imgWeather = document.createElement("img");
     imgWeather.setAttribute("alt", "weather img");
 
-    cityObj.weather.map((data) => data.main.toLowerCase() == "clouds" ? imgWeather.setAttribute("src", "img/cloud.png") :
-    data.main.toLowerCase() == "rain" ? imgWeather.setAttribute("src", "img/cloud+rain.png") : imgWeather.setAttribute("src", "img/sun.png"));
+    cityObj.weather.map((data) => {
+        if(data.main.toLowerCase() == "clouds") {
+            imgWeather.setAttribute("src", "img/cloud.png");
+        } else if(data.main.toLowerCase() == "rain") {
+            imgWeather.setAttribute("src", "img/cloud+rain.png");
+        } else {
+            // if(document.getElementById("hour").join(""))
+            imgWeather.setAttribute("src", "img/sun.png");
+        }
+    });
 
     imgWeather.setAttribute("width", "120px");
     imgWeather.setAttribute("height", "auto");
@@ -107,16 +168,27 @@ const createCard = (cityObj, icon) => {
     divLeft.append(imgWeather, cityName);
     // END    OF   CREATING  THE   LEFT    SIDE   OF   THE    CARD 
 
-    divAll.style.backgroundImage = `url(${icon})`;
-    divAll.style.backgroundPosition = "center";
-    divAll.style.backgroundSize = "cover";
-    divAll.classList.add("card");
+    divWrap.style.backgroundImage = `url(${city.icon})`;
+    divWrap.style.backgroundPosition = "center";
+    divWrap.style.backgroundSize = "cover";
 
-    divAll.append( divLeft, cardRight(cityObj.main));
+    divLayout.classList.add("overlay");
 
-    q("#city-list").append(divAll);
+    divWrap.classList.add("card");
+
+    divAll.classList.add("all-info");
+
+    divAll.append( divLeft, cardRight(cityObj.main, city));
+    divWrap.append(divLayout, divAll);
+
+    if(city.saves == "yes") {
+        q(".saved-city").append(divWrap);
+    } else
+    q(".city-list").append(divWrap);
 }
 //                            END      CARD      CITY
+
+
 
 
 
@@ -167,6 +239,9 @@ const localTime = (datatime) => {
     const minute = document.createElement("h4");
     const seconds = document.createElement("h4");
 
+    hour = timeData.split(":")[0];
+    mofter = timeData.split(":")[2];
+
     hours.textContent = `${timeData.split(":")[0]}:`;
     minute.textContent = `${timeData.split(":")[1]}:`;
     seconds.textContent = `${timeData.split(":")[2]}`;
@@ -191,10 +266,16 @@ setInterval(refreshTime, 1000);
 //   end local time
 
 
-const getApi = async (city) => {
-    const res = await 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=602e9e1a06c28fdda7a4dc03a03ca575&units=metric`);
-    return await res.json();
+const getApi = async (cityList) => {
+    let dataList = [];
+    for(let i = 0; i < cityList.length; i++) {
+        const res = await 
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityList[i].city}&appid=602e9e1a06c28fdda7a4dc03a03ca575&units=metric`);
+        const data = await res.json();
+        dataList.push(data);
+    }
+
+    return dataList;
 }
 
-export { addOption, getApi, createCard, selectCity, removeCard }
+export { addOption, getApi, createCard, selectCity, removeCard, mofter, hour }
