@@ -119,7 +119,7 @@ const cardRight = (main, city) => {
     const feelTemp = document.createElement("p");
 
     temp.textContent = `${parseInt(main.temp)} °C`;
-    feelTemp.textContent = `wind chill ${main.feels_like} °C`;
+    feelTemp.textContent = `perceived ${main.feels_like} °C`;
 
     divStarTemp.classList.add("temp-star");
     divStarTemp.append(temp, imgSave);
