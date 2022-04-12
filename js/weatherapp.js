@@ -19,7 +19,8 @@ dataList.then((data) => {
 
     cardEls.forEach((element) => {
         element.addEventListener("click", () => {
-            q(".overlay-zoom").classList.remove("hidden");            
+            q(".overlay-zoom").classList.remove("hidden"); 
+            q(".close-zoom").classList.remove("hidden");           
             zoomCity(element, data);
 
         });

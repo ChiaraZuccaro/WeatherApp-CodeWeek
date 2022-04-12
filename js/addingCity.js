@@ -383,6 +383,7 @@ const zoomCity = (card, data) => {
        q(".zoomed").removeChild(q(".overlay-drop"));
        q(".zoomed").removeChild(q(".drop-menu"));
        q(".overlay-zoom").classList.add("hidden");
+       q(".close-zoom").classList.add("hidden");
    });
 
    q(".overlay-drop").addEventListener("click", () => {

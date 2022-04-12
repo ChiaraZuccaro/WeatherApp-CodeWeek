@@ -80,6 +80,20 @@ html, body {
 
     z-index: 666;
 }
+.close-zoom {
+    position: fixed;
+    top: 3.5%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+
+    color: #d7e2e9;
+
+    z-index: 777;
+}
 .zoomed {
     position: fixed;
     top: 50%;
@@ -722,7 +736,13 @@ footer a {
     }
 
 
-
+    .close-zoom {
+        width: 80%;
+        text-align: center;
+        top: 18%;
+    
+        font-size: 15px;
+    }
 
 
 
@@ -939,7 +959,11 @@ footer a {
     }
 
 
-
+    .close-zoom {
+        top: 6%;
+    
+        font-size: 20px;
+    }
 
 
 
@@ -1104,6 +1128,11 @@ footer a {
     }
 
 
+    .close-zoom {
+        top: 5%;
+    
+        font-size: 25px;
+    }
 
     .zoomed-card {
         width: 540px;
@@ -1263,6 +1292,12 @@ footer a {
 
     header .options label {
         display: block;
+    }
+
+    .close-zoom {
+        top: 3.5%;
+    
+        font-size: 25px;
     }
 
     .overlay-drop {
