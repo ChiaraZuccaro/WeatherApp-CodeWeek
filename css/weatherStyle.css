@@ -750,7 +750,7 @@ footer a {
         width: 100px;
     }
     .zoomed-card .bottom-zoom .left-zoom p {
-        font-size: 20px;
+        font-size: 18px;
     }
     .zoomed-card .bottom-zoom .right-zoom {
         width: 50%;
@@ -1046,32 +1046,31 @@ footer a {
     }
     .card .overlay {
         width: 350px;
-        height: 263px;
+        height: 253px;
     }
-    .card .all-info{
+    .card .all-info {
         width: 310px;
 
         padding: 10px 20px;
     }
-    .card .left-side img {
+    .card .all-info .left-side img {
         width: 120px;
 
 
     }
-    .card .left-side h2 {
-        /* align-self: flex-start; */
-        font-size: 30px;
+    .card .all-info .left-side h2 {
+        font-size: 25px;
 
         margin: 0;
     }
-    .card .right-side {
+    .card .all-info .right-side {
         padding: 10px 5px;
     }
-    .card .right-side .temp p {
+    .card .all-info .right-side .temp p {
         font-size: 16px;
     }
-    .card .right-side .bottom-card .min-max {
-        width: 70%;
+    .card .all-info .right-side .bottom-card .min-max {
+        width: 80%;
     }
 
 
@@ -1219,6 +1218,11 @@ footer a {
         font-size: 28px;
     
         margin: 5px 0;
+    }
+
+
+    .card .all-info .left-side h2 {
+        font-size: 30px;
     }
 
 
