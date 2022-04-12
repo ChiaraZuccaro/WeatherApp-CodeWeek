@@ -47,7 +47,17 @@ const cityListHome = [
         city: "Palermo",
         icon: "features/vergogna.jpg",
         saves: "yes"
-    } 
+    },
+    {
+        city: "Jizan",
+        icon: "https://inspiration.rehlat.com/wp-content/uploads/2018/11/Jizan.jpg",
+        saves: "yes"
+    },
+    {
+        city: "Oymyakon",
+        icon: "https://siviaggia.it/wp-content/uploads/sites/2/2016/10/04_oymyakon-renna_visityakutia-com_1217.jpg",
+        saves: "yes"
+    }
 ];
 let cityListStorage;
 let cityListComplete;
