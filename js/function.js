@@ -149,6 +149,8 @@ const createCard = (cityObj, city) => {
             imgWeather.setAttribute("src", "img/cloud.png");
         } else if(data.main.toLowerCase() == "rain") {
             imgWeather.setAttribute("src", "img/cloud+rain.png");
+        } else if(data.main.toLowerCase() == "snow"){
+            imgWeather.setAttribute("src", "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57295/cloud-with-snow-emoji-clipart-md.png");
         } else {
             // if(document.getElementById("hour").join(""))
             imgWeather.setAttribute("src", "img/sun.png");

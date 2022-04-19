@@ -225,6 +225,11 @@ const zoomDown = (data) => {
                 gif.setAttribute("src", "https://cdn.dribbble.com/users/68398/screenshots/2560830/lex_dribbble.gif");    
                 suggestWeather.textContent = "It's a good time to go for a walk!";
             }
+        } else if(element.main.toLowerCase() == "snow") {
+            imgWeather.setAttribute("src", "https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57295/cloud-with-snow-emoji-clipart-md.png");
+
+            gif.setAttribute("src", "https://thumbs.gfycat.com/KeyPeriodicArmednylonshrimp-small.gif");
+            suggestWeather.textContent = "It'snowing, stay at home if you can";
         }
 
                         
